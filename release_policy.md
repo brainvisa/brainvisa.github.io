@@ -26,7 +26,7 @@ When we want to perform a release and publish one (or several) distributions, th
   * for this project *only*, the fixed version should be merged into the RC branch. If needed cherry-picking can be used to exclude other modifications not related to the current fixes.
   * If a project can be only fixed if modifications are done in an upstream project, then the upstream project modifications have to also be manually merged into RC.
   * Any time a project sources change in RC, its tests are automatically invalidated: they have to run again. Same for all downstream projects
-  * tests should / may be run following projects dependencies: test projects which have actually changed, and their downstream projects. See [Tests handling](#Tests handling)
+  * tests should / may be run following projects dependencies: test projects which have actually changed, and their downstream projects. See [Tests handling](#tests-handling)
 * when all projects are validated, the release is OK.
   
 ## Tests handling
