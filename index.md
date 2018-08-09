@@ -5,3 +5,4 @@ title: BrainVISA developers site
 
 Users site: http://brainvisa.info
 
+[Release policy](release_policy.md)
