@@ -32,4 +32,5 @@ There is also a [developer section](http://brainvisa.info/web/infrastructure.htm
 
 ## Topics
 
+[Developing in BrainVISA environment](developing.md)
 [Release policy](release_policy.md)
