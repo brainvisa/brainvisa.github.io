@@ -6,4 +6,6 @@ Sources: currently partly on GitHub, partly on https://bioproj.extra.cea.fr/ usi
 
 Developing and releasing toolboxes binary-compatible with core BrainVISA binary distributions: [casa-distro](http://brainvisa.info/casa-distro/index.html)
 
+Downloading sources and building all the projects is handled by [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/), more precisely via the command [bv_maker](http://brainvisa.info/brainvisa-cmake/bv_maker.html) and a configuartion file.
+
 Make sure to read the [Contributor's guide](contributing.md) if you intend to contribute.
