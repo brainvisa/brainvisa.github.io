@@ -1,14 +1,24 @@
 ---
-title: BrainVISA developers site
+title: BrainVISA developers' website
 ---
 
 # {{page.title}}
 
-Neuroimaging software platform for mass data analysis
+**BrainVISA**: a neuroimaging software platform for mass data analysis
 
-Users site: http://brainvisa.info
+**All the information for users of BrainVISA is on [brainvisa.info](http://brainvisa.info/).** This website is meant for developers.
 
-## Generalities
+
+## Topics
+
+[Developing in BrainVISA environment](developing.md)
+
+[Contributor's guide](contributing.md)
+
+[Release policy](release_policy.md)
+
+
+## Structure of BrainVISA
 
 BrainVISA contains a set of projects, each project may be divided into several components. About 50 components are currently part of the BrainVISA environment.
 
@@ -29,11 +39,3 @@ In addition to applicative projects, some infrastructure projects help managing 
 This developer site focuses more on the latter infrastructure tools, and on topics of how to develop in BrainVISA development environment, how to release the software packages etc.
 
 There is also a [developer section](http://brainvisa.info/web/infrastructure.html) on BrainVisa website, which also deals about the various libraries APIs to develop applications.
-
-## Topics
-
-[Developing in BrainVISA environment](developing.md)
-
-[Contributor's guide](contributing.md)
-
-[Release policy](release_policy.md)
