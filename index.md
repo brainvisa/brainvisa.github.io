@@ -34,4 +34,6 @@ There is also a [developer section](http://brainvisa.info/web/infrastructure.htm
 
 [Developing in BrainVISA environment](developing.md)
 
+[Contributor's guide](contributing.md)
+
 [Release policy](release_policy.md)
