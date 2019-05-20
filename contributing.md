@@ -140,7 +140,7 @@ If not already done:
     1. Create an account on https://github.com/ if you do not already have one.
     2. Fork the repository: go to its GitHub page, then click the Fork button on the top right:
 
-            ![Fork button](images/Bootcamp-Fork.png)
+        ![Fork button](images/Bootcamp-Fork.png)
 
         You can read the [GitHub guide on forking projects](https://guides.github.com/activities/forking/) to learn more.
 
