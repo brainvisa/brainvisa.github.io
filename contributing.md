@@ -121,7 +121,7 @@ Helper tools
 
 will show the status of source branches in multiple projects (current branch, modified code, staged changes, local commits not pushed to a remote, diverging branches and remotes...)
 
-There is also possibility to use [vcstool](https://github.com/vcstools/vcstools/)
+There is also possibility to use [vcstool](https://github.com/dirk-thomas/vcstool)
 
 
 <a name="feature_branch">
