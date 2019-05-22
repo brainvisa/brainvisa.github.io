@@ -59,10 +59,12 @@ If you need to explicitly initialize the backend to a specific Qt implementation
         widget = Qt.QWidget()
         # etc.
 
-But the bast way is *not* to force this, and rely on the [`QT_API`](https://stackoverflow.com/questions/52930781/qt-api-environment-variable) environment variable that any user can set:
+But the best way is *not* to force this, and rely on the [`QT_API`](https://stackoverflow.com/questions/52930781/qt-api-environment-variable) environment variable that any user can set:
 
         export QT_API=pyqt5
         soma_workflow_gui # will use PyQt5.
+        
+The `QT_API` variable is already set by the `bv_env` program according to the settings of the build workflow, so you even don't have to care about it in `bv_maker`and `casa-distro`.
 
 ### major changes:
 
