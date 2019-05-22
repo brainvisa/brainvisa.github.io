@@ -73,6 +73,8 @@ But the bast way is *not* to force this, and rely on the [`QT_API`](https://stac
 Python2 / python3
 -----------------
 
+https://docs.python.org/3/howto/pyporting.html
+
 Things to check:
 
 * use ``from __future__ import print_function`` at the beginning of source files
@@ -98,6 +100,8 @@ Things to check:
 * ``import cPickle`` -> ``from six.moves import cPickle`` (or use the regular ``import pickle``)
 * ``import StringIO`` -> ``from six.moves import StringIO``
 * ``types.StringTypes`` -> ``six.string_types``
+* ``urllib2.urlopen()`` -> ``six.moves.urllib.request.urlopen()``
+* ``execfile()`` -> ``six.exec_()``
 * dict ordering / iteration order is different and non-reproducible in python 3.0-3.6
 * The real nightmare is strings: str, unicode, bytes, and encoding...
 * Encoding also causes problems to open text files.
