@@ -12,7 +12,7 @@ Projects list
 How to setup a build workflow using Qt5 and/or python3
 ------------------------------------------------------
 
-### Building
+### Building
 
 * Your system must have Qt5 / python3 + all modules installed. In casa-distro, Ubuntu-16.04 and ubuntu-18.04 develpment images are already ready for that.
 * Edit the `bv_maker.cfg` file, and change in the `[ build ]` section:
