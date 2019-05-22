@@ -118,3 +118,4 @@ Things to check:
                 1.5
 
   thus, use ``3 // 2`` when possible.
+* in python2, there are two types `int` and `long`: `2L`. In python3, all ints are longs, and `long` does not exist any longer. `2L` is a syntax error.
