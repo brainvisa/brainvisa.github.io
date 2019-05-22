@@ -105,6 +105,16 @@ Things to check:
 * ``types.StringTypes`` -> ``six.string_types``
 * ``urllib2.urlopen()`` -> ``six.moves.urllib.request.urlopen()``
 * ``execfile()`` -> ``six.exec_()``
+* ``raise (exc_type, exc_instance, exc_traceback)`` -> ``six.reraise(exc_type, exc_instance, exc_traceback)``
+* ``try: .. ; except Exception, e:`` -> ``try: ...; except Exception as e:``
+* iterators: ``iterator.next()`` -> ``next(iterator)``
+* to get the 1st item of a generator: ``next(iter(generator))``
+* comparison / sorting operators: redefine ``something.__hash__()`` when needed, 
+* ``__cmp__`` is deprecated and not called anymore, sometimes needs to redefine ``__lt__``, ``__gt__``, ``__eq__`` etc.
+* ``map(func, list)`` -> ``[func(x) for x in list]``, or ``(func(x) for x in list)`` if a generator is OK
+* ``reduce(func, list)`` -> ``six.moves.reduce(func, list)``
+* ``filter(func, list)`` -> ``[x for x in list if func(x)]``, or ``(x for x in list if func(x))`` if a generator is OK
+* `0777` -> `0o777`: `0777` is a syntax error in python3
 * dict ordering / iteration order is different and non-reproducible in python 3.0-3.6
 * The real nightmare is strings: str, unicode, bytes, and encoding...
 * Encoding also causes problems to open text files.
