@@ -107,3 +107,14 @@ Things to check:
 * Encoding also causes problems to open text files.
 * Some functions used to return `str` and now return `bytes`, for instance ``file.read()`` when no encoding is used, ``sqlite3`` requests results...
 * sharing pickled objects between python 2 and 3 is almost impossible, mainly because of these str/unicode/bytes/encoding problems
+* int divisions: in python2:
+
+                >>> 3 / 2
+                1
+
+  in python3:
+
+                >>> 3 / 2
+                1.5
+
+  thus, use ``3 // 2`` when possible.
