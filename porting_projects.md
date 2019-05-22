@@ -73,7 +73,7 @@ But the bast way is *not* to force this, and rely on the [`QT_API`](https://stac
 Python2 / python3
 -----------------
 
-https://docs.python.org/3/howto/pyporting.html
+[official porting doc](https://docs.python.org/3/howto/pyporting.html)
 
 Things to check:
 
