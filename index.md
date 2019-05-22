@@ -39,3 +39,7 @@ In addition to applicative projects, some infrastructure projects help managing 
 This developer site focuses more on the latter infrastructure tools, and on topics of how to develop in BrainVISA development environment, how to release the software packages etc.
 
 There is also a [developer section](http://brainvisa.info/web/infrastructure.html) on BrainVisa website, which also deals about the various libraries APIs to develop applications.
+
+## Developers docs
+
+[Porting prohjects to Qt5 and Python3](porting_projects.md)
