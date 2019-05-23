@@ -106,7 +106,7 @@ Things to check:
 * ``import StringIO`` -> ``from six.moves import StringIO``
 * ``types.StringTypes`` -> ``six.string_types``
 * ``urllib2.urlopen()`` -> ``six.moves.urllib.request.urlopen()``
-* ``execfile()`` -> ``six.exec_()``
+* ``execfile()`` -> ``with open(file[, encoding='utf-8']) as f: six.exec_(f.read()[, ...])``, or use ``soma.importer.execfile()``
 * ``raise (exc_type, exc_instance, exc_traceback)`` -> ``six.reraise(exc_type, exc_instance, exc_traceback)``
 * ``try: .. ; except Exception, e:`` -> ``try: ...; except Exception as e:``
 * iterators: ``iterator.next()`` -> ``next(iterator)``
