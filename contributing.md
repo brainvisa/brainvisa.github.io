@@ -14,16 +14,56 @@ BrainVISA projects are managed by [brainvisa-cmake](http://brainvisa.info/brainv
 
 For sources management, `bv_maker` relies on standard source versioning control software, namely `subversion` or `git`. It mainly adds a multi-project management layer.
 
-### Setup
+### Setup a build environment
 
-* Get [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html)
-* [configure sources](http://brainvisa.info/brainvisa-cmake/compile_existing.html#edit-bv-maker-configuration-file)
+This can be done either using [casa-distro](http://brainvisa.info/casa-distro/index.html) which provides build environments in virtual containers, or on a host system, after installing all needed development libraries (list not provided here...), using [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html).
+
+* with casa-distro (simpler, recommended)
+  * get [casa-distro](http://brainvisa.info/casa-distro/index.html)
+  * create a build-workflow, for instance:
+          
+          casa_distro create source_distro=opensource system=ubuntu-16.04 branch=bug_fix
+  * edit approopriate configs in ``<workflow_dir>/conf``(especially ``svn.secret`` and ``bv_maker.cfg``) if needed
+  * build using ``casa_distro bv_maker``
+
+* on host system
+  * Get [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html)
+  * [configure sources](http://brainvisa.info/brainvisa-cmake/compile_existing.html#edit-bv-maker-configuration-file)
+  * install all needed thirdparty libraries dependencies (may be fastidious)
+  * build using ``bv_maker``
 
 ### Read-only update access
 
-* [bv_maker sources](#bv_maker_sources) etc
+While not developing, updating the codes is just a matter of using:
+    
+    bv_maker sources
+
+see [bv_maker sources](#bv_maker_sources).
+Or to update the code and rebuild the needed modifications, simply:
+
+    bv_maker
+    
+either on the host system (for a host build) or in ``casa-distro``.
 
 ### Modifying / developing
+
+When starting to develop into a project managed by ``git``, there are two possible modes: either *fork* the project on GitHub, or create a feature branch on the *origin* repository (if appropriate access rights are granted).
+
+#### Several use cases
+
+* fix a bug (light, needs to be quickly fixed) vs develop a new feature (heavier change, developing it may take a while)
+* the user may or may not have push permission on the `origin` repository to create or modify a feature branch
+* the user may or may not have push permission on the `origin` repository to push on the `master` branch. Normally only admins have such permission.
+
+|                      | fix a bug | develop a feature |
+| -------------------- | --------- | ----------------- |
+| user has push access to `origin/master` | may push to master or [feature branch](#feature_branch) | [feature branch](#feature_branch) with or without fork |
+| user has push access to `origin/<feature>` | push to [feature branch](#feature_branch) | [feature branch](#feature_branch) with or without fork |
+| no push access       | [feature branch](#feature_branch) in fork | [feature branch](#feature_branch) in fork |
+
+Basically we handle multiple projects the same way as working in a single project, we just need to perform commit / push / pull request operations multiple times. But we just needed tools to help automatize at least update operations in multiple projects.
+
+#### fork mode
 
 * [fork the project](forking)
 * checkout / create a feature branch
@@ -46,26 +86,32 @@ For sources management, `bv_maker` relies on standard source versioning control 
 * pull request on GitHub
 * [finish a feature](#finish_feature)
 
+#### feature branch on the origin repository
 
-**Alternatively**, you can request write access to the official repository and push your branch directly there:
+* check you have permission to create such a feature branch on the repository, or ask the maintainers for this permission
+* checkout / create a feature branch
+  (for example _soma-io_):
 
-    git push -u origin <mybranch>
+            cd <sources>/soma/soma-io/master
+            git checkout -b mybranch
 
-this will be discussed in the use cases now:
+* modify code
+* commit (locally)
 
-Several use cases
------------------
+            [hack hack hack on subsystem 1...]
+            git add <file1...>
+            git commit
+            [hack hack hack on subsystem 2...]
+            git add <file2...>
+            git commit
 
-* single project vs multiple projects
-* fix a bug (light, needs to be quickly fixed) vs develop a new feature (heavier change)
-* the user may or may not have push permission on the `origin` repository
+* push to the repository:
 
-|                      | fix a bug | develop a feature |
-| -------------------- | --------- | ----------------- |
-| user has push access | push to master or [feature branch](#feature_branch) | [feature branch](#feature_branch) |
-| no push access       | [feature branch](#feature_branch) | [feature branch](#feature_branch) |
-
-Basically we handle multiple projects the same way as working in a single project, we just need to perform commpi / push / pull request operations multiple times. But we just needed tools to help automatize at least update operations in multiple projects.
+            git push -u origin <mybranch>
+  
+  (if the branch is correctly configured, just ``git push`` should be enough)
+* pull request on GitHub
+* [finish a feature](#finish_feature)
 
 
 <a name="bv_maker_sources">
