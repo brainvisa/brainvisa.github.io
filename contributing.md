@@ -57,62 +57,11 @@ When starting to develop into a project managed by ``git``, there are two possib
 
 |                      | fix a bug | develop a feature |
 | -------------------- | --------- | ----------------- |
-| user has push access to `origin/master` | may push to master or [feature branch](#feature_branch) | [feature branch](#feature_branch) with or without fork |
+| user has push access to `origin/master` | may push to master or [feature branch](#feature_branch) | [feature branch](#feature_branch) [with](#forking) or [without fork](#origin_branch) |
 | user has push access to `origin/<feature>` | push to [feature branch](#feature_branch) | [feature branch](#feature_branch) with or without fork |
 | no push access       | [feature branch](#feature_branch) in fork | [feature branch](#feature_branch) in fork |
 
 Basically we handle multiple projects the same way as working in a single project, we just need to perform commit / push / pull request operations multiple times. But we just needed tools to help automatize at least update operations in multiple projects.
-
-#### fork mode
-
-* [fork the project](forking)
-* checkout / create a feature branch
-  (for example _soma-io_):
-
-            cd <sources>/soma/soma-io/master
-            git checkout -b mybranch
-
-* modify code
-* commit (locally)
-
-            [hack hack hack on subsystem 1...]
-            git add <file1...>
-            git commit
-            [hack hack hack on subsystem 2...]
-            git add <file2...>
-            git commit
-
-* push to personal fork
-* pull request on GitHub
-* [finish a feature](#finish_feature)
-
-#### feature branch on the origin repository
-
-* check you have permission to create such a feature branch on the repository, or ask the maintainers for this permission
-* checkout / create a feature branch
-  (for example _soma-io_):
-
-            cd <sources>/soma/soma-io/master
-            git checkout -b mybranch
-
-* modify code
-* commit (locally)
-
-            [hack hack hack on subsystem 1...]
-            git add <file1...>
-            git commit
-            [hack hack hack on subsystem 2...]
-            git add <file2...>
-            git commit
-
-* push to the repository:
-
-            git push -u origin <mybranch>
-  
-  (if the branch is correctly configured, just ``git push`` should be enough)
-* pull request on GitHub
-* [finish a feature](#finish_feature)
-
 
 <a name="bv_maker_sources">
 
@@ -179,8 +128,7 @@ Working with feature branches
 
 ### with a fork (recommended)
 
-If not already done:
-* Fork on github.
+* Fork on github, if not already done.
   Follow the steps below if you do not yet have a personal fork of the project:
 
     1. Create an account on https://github.com/ if you do not already have one.
@@ -190,13 +138,13 @@ If not already done:
 
         You can read the [GitHub guide on forking projects](https://guides.github.com/activities/forking/) to learn more.
 
-* Add your personal fork as a _remote_ in your local repository:
+    3. Add your personal fork as a _remote_ in your local repository:
 
-        git remote add myfork https://github.com/<username>/<repo>.git
+          git remote add myfork https://github.com/<username>/<repo>.git
 
-    or:
+       or:
 
-        git remote add myfork git@github.com:<username>/<repo>.git
+          git remote add myfork git@github.com:<username>/<repo>.git
 
 * fetch/pull that remote:
 
@@ -220,11 +168,15 @@ If not already done:
 
 When the feature is done and OK:
 
-* create a pull request on github
+* create a pull request on github from your personal fork to `origin`
+  ![pull_request_button](images/pull_request.png))
 * [finish and cleanup](#finish_feature)
 
+<a name="origin_branch">
+ 
 ### without a fork (needs permission to create branches on origin)
 
+* check you have permission to create such a feature branch on the repository, or ask the maintainers for this permission
 * checkout / update master
 
         git checkout master
@@ -248,10 +200,11 @@ When the feature is done and OK:
 
 When the feature is done and OK:
 
-* create a pull request from origin/new_feature to origin/master or origin/integration
+* create a pull request from `origin/new_feature` to `origin/master` or `origin/integration`
+  ![pull_request_button](images/pull_request.png))
 * [finish and cleanup](#finish_feature_origin)
 
-all users will see the feature branch, please don't make thousands of feature branches, or at least clean them up once they are merged.
+all users will see the feature branch, please don't make thousands of feature branches, and be careful to clean them up once they are merged.
 
 <a name="finish_feature">
 
