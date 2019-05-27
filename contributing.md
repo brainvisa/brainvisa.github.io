@@ -58,8 +58,8 @@ When starting to develop into a project managed by ``git``, there are two possib
 |                      | fix a bug | develop a feature |
 | -------------------- | --------- | ----------------- |
 | user has push access to `origin/master` | may push to master or [feature branch](#feature_branch) | [feature branch](#feature_branch) [with](#forking) or [without fork](#origin_branch) |
-| user has push access to `origin/<feature>` | push to [feature branch](#feature_branch) | [feature branch](#feature_branch) with or without fork |
-| no push access       | [feature branch](#feature_branch) in fork | [feature branch](#feature_branch) in fork |
+| user has push access to `origin/<feature>` | push to [feature branch](#feature_branch) [with](#forking) or [without fork](#origin_branch) | [feature branch](#feature_branch) [with](#forking) or [without fork](#origin_branch) |
+| no push access       | [feature branch with fork](#forking) | [feature branch with fork](#forking) |
 
 Basically we handle multiple projects the same way as working in a single project, we just need to perform commit / push / pull request operations multiple times. But we just needed tools to help automatize at least update operations in multiple projects.
 
@@ -168,8 +168,10 @@ Working with feature branches
 
 When the feature is done and OK:
 
-* create a pull request on github from your personal fork to `origin`
-  ![pull_request_button](images/pull_request.png))
+* create a pull request on github from your personal fork to `origin`:
+
+  ![pull_request_button](images/pull_request.png)
+  
 * [finish and cleanup](#finish_feature)
 
 <a name="origin_branch">
@@ -200,8 +202,10 @@ When the feature is done and OK:
 
 When the feature is done and OK:
 
-* create a pull request from `origin/new_feature` to `origin/master` or `origin/integration`
-  ![pull_request_button](images/pull_request.png))
+* create a pull request from `origin/new_feature` to `origin/master` or `origin/integration`:
+
+  ![pull_request_button](images/pull_request.png)
+  
 * [finish and cleanup](#finish_feature_origin)
 
 all users will see the feature branch, please don't make thousands of feature branches, and be careful to clean them up once they are merged.
