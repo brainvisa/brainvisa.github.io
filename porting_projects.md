@@ -7,7 +7,22 @@ Porting to Qt5 and to Python3 are two independent tasks.
 Projects list
 -------------
 
-\[TODO]
+- baby
+- Brainrat
+- casa-distro
+- CatiDB
+- Constellation
+- cortical_surface (must be tested)
+- data_storage_client
+- DISCO
+- freesurfer (must be tested)
+- longitudinal
+- Neuroimaging toolbox (nit)
+- QualiCATI
+- Sacha
+- Snapbase (must be tested)
+- SPM
+- Whasa
 
 How to setup a build workflow using Qt5 and/or python3
 ------------------------------------------------------
