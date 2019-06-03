@@ -84,7 +84,8 @@ The `QT_API` variable is already set by the `bv_env` program according to the se
 ### major changes:
 
 * No very deep changes in the API, most code written for Qt4 will work with Qt5.
-* The QtWebKit module has been deprecated, and removed in Ubuntu 18/Qt4. This needs to explicitely switch between QtWebKit (Qt4) and QtWebEngine (Qt5) instead (with a `if` in codes).
+* One of the most important points however is in **Pyqt4/PyQt5 handling of slots**: in a slot function, when an exception is raised, in PyQt4 the slot would end silently and the program would go on its normal life, but in PyQt5, an exception would cause the whole program to end with an error. So **check / catch exceptions in callbacks**
+* The **QtWebKit module has been deprecated**, and removed in Ubuntu 18/Qt4. This needs to explicitely switch between QtWebKit (Qt4) and QtWebEngine (Qt5) instead (with a `if` in codes).
 * A layout problem seems to exist in QGLWidget with Qt5, which causes sometimes GL widgets to appear outside of their parent widget (in a non-reproducible way). We're working on replacing it with QOpenGLWidget in Qt5 in Anatomist.
 
 
