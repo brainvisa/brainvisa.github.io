@@ -297,10 +297,18 @@ Howto / common situations
 
 In other words, https / ssh URL or github projects:
     
-URLs in github may use the *https* protocol (not needing a ssh key, but git will ask for a password every time you push), or the *ssh* protocol, using a ssh key which will avoid the need for a password everytime. bv_maker uses https by default because it cannot assume you have a github account and have provided a ssh key in github. But it's more convenient to work with ssh. So we have to switch when we have a github account and a ssh key registered in it.
+URLs in github may use the *https* protocol (not needing a ssh key, but git will ask for a password every time you push), or the *ssh* protocol, using a ssh key which will avoid the need for a password every time. bv_maker uses https by default because it cannot assume you have a github account and have provided a ssh key in github. But it's more convenient to work with ssh. So we have to switch when we have a github account and a ssh key registered in it.
 There is a tool to switch automatically:
 
     git config --global url."git@github.com:".insteadOf "https://github.com/"
 
 This tells git to automatically replaces URLs starting with `https://github.com/` with their `git@github.com:` counterpart.
-    
+
+Otherwise it is possible to set individually the git remote URLs to use *ssh* rather than *https*, but this will only work for personal remotes (a fork), **not on origin** for projects known by *brainvisa-cmake*, because *bv_maker* will reset the origin URL when updating sources to the URL in the "official" projects list.
+
+    git remote set-url johndoe git@github.com:johndoe/brainvisa-cmake.git
+
+The last option is to make git store credentials **unencrypted** in the .git directory of the project. You have to do so for each project, and in *brainvisa-cmake*, each declared branch (bug_fix / trunk etc.) since each is a separate clone of the git repos. Then on the next update (`bv_maker sources`) git will ask for username and password, still for each project directory, and then store them and don't ask again the next time:
+
+    git config credential.helper store
+
