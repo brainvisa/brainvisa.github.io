@@ -291,6 +291,8 @@ Howto / common situations
         git checkout <wrong_branch>
         git reset --hard <previous_id>
 
+<a name="remote_crendentials">
+
 ### git keeps asking for a login / password for every push
 
 In other words, https / ssh URL or github projects:
