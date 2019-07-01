@@ -291,6 +291,14 @@ Howto / common situations
             git checkout <wrong_branch>
             git reset --hard <previous_id>
 
-* https / ssh URL or github projects:
+* **git keeps asking for a login / password for every push**
+
+    in other words, https / ssh URL or github projects:
+    
     URLs in github may use the *https* protocol (not needing a ssh key, but git will ask for a password every time you push), or the *ssh* protocol, using a ssh key which will avoid the need for a password everytime. bv_maker uses https by default because it cannot assume you have a github account and have provided a ssh key in github. But it's more convenient to work with ssh. So we have to switch when we have a github account and a ssh key registered in it.
-    There is apparently a tool to switch automatically. **\[TODO]** find and describe it.
+    There is a tool to switch automatically:
+      
+       git config --global url."git@github.com:".insteadOf "https://github.com/"
+
+    This tells git to automatically replaces URLs starting with `https://github.com/` with their `git@github.com:` counterpart.
+    
