@@ -291,7 +291,7 @@ Howto / common situations
         git checkout <wrong_branch>
         git reset --hard <previous_id>
 
-<a name="remote_crendentials">
+<a name="remote_credentials">
 
 ### git keeps asking for a login / password for every push
 
