@@ -262,43 +262,43 @@ Possibly needs some specific permissions. If you cannot perform some steps, plea
 Howto / common situations
 -------------------------
 
-* I have started to modify source code without checking the state / branch of my repository
+### I have started to modify source code without checking the state / branch of my repository
 
-        git stash
-        git checkout -b new_branch
-        git stash pop
-        git add <files>
-        git commit
-        [ git push ]
+    git stash
+    git checkout -b new_branch
+    git stash pop
+    git add <files>
+    git commit
+    [ git push ]
 
-* same but I have also commited locally, on the wrong branch
+### same but I have also commited locally, on the wrong branch
 
-    * if only one commit has been done: use cherry-pick
+* if only one commit has been done: use cherry-pick
 
-            git status
-            # note the commit id if you are in a detached branch, and the previous one
-            # (you can use gitg for that)
-            git checkout -b new_branch origin/master
-            git cherry-pick <commit_id>
-            git push
-            git checkout <wrong_branch>
-            git reset --hard <previous_id>
+        git status
+        # note the commit id if you are in a detached branch, and the previous one
+        # (you can use gitg for that)
+        git checkout -b new_branch origin/master
+        git cherry-pick <commit_id>
+        git push
+        git checkout <wrong_branch>
+        git reset --hard <previous_id>
 
-    * if several commits have been done:
-        get the commit ids of the last commit (`<commit_id>`), and of the last one __before__ the first commit you have to move (`<previous_id>`)
+* if several commits have been done:
+    get the commit ids of the last commit (`<commit_id>`), and of the last one __before__ the first commit you have to move (`<previous_id>`)
 
-            git rebase --onto master <previous_id> <commit_id>
-            git checkout <wrong_branch>
-            git reset --hard <previous_id>
+        git rebase --onto master <previous_id> <commit_id>
+        git checkout <wrong_branch>
+        git reset --hard <previous_id>
 
-* **git keeps asking for a login / password for every push**
+### git keeps asking for a login / password for every push
 
-    in other words, https / ssh URL or github projects:
+In other words, https / ssh URL or github projects:
     
-    URLs in github may use the *https* protocol (not needing a ssh key, but git will ask for a password every time you push), or the *ssh* protocol, using a ssh key which will avoid the need for a password everytime. bv_maker uses https by default because it cannot assume you have a github account and have provided a ssh key in github. But it's more convenient to work with ssh. So we have to switch when we have a github account and a ssh key registered in it.
-    There is a tool to switch automatically:
-      
-       git config --global url."git@github.com:".insteadOf "https://github.com/"
+URLs in github may use the *https* protocol (not needing a ssh key, but git will ask for a password every time you push), or the *ssh* protocol, using a ssh key which will avoid the need for a password everytime. bv_maker uses https by default because it cannot assume you have a github account and have provided a ssh key in github. But it's more convenient to work with ssh. So we have to switch when we have a github account and a ssh key registered in it.
+There is a tool to switch automatically:
 
-    This tells git to automatically replaces URLs starting with `https://github.com/` with their `git@github.com:` counterpart.
+    git config --global url."git@github.com:".insteadOf "https://github.com/"
+
+This tells git to automatically replaces URLs starting with `https://github.com/` with their `git@github.com:` counterpart.
     
