@@ -19,14 +19,22 @@ For sources management, `bv_maker` relies on standard source versioning control 
 This can be done either using [casa-distro](http://brainvisa.info/casa-distro/index.html) which provides build environments in virtual containers, or on a host system, after installing all needed development libraries (list not provided here...), using [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html).
 
 * with casa-distro (simpler, recommended)
-  * get [casa-distro](http://brainvisa.info/casa-distro/index.html)
-  * create a build-workflow, for instance:
+  * install [Singularity 3](https://sylabs.io/singularity/). Some Linux packages are available on [BrainVisa download page](https://new.brainvisa.info/download.html#using-singularity)
+  * Alternative 1:
+    * get a [developer image of BrainVisa/Casa-Distro](https://new.brainvisa.info/download.html#developers) (images named "casa-dev-\<system\>.sif" for Singularity)
+    * follow the instructions on this page to setup a developer *environment* from the image
+  * Alternative 2:
+    * get [casa-distro](http://brainvisa.info/casa-distro/index.html)
+    * create a *developer environment*, for instance:
           
-          casa_distro create source_distro=opensource system=ubuntu-16.04 branch=bug_fix
-  * edit approopriate configs in ``<workflow_dir>/conf``(especially ``svn.secret`` and ``bv_maker.cfg``) if needed
-  * build using ``casa_distro bv_maker``
+          casa_distro setup_dev distro=opensource system=ubuntu-18.04 branch=master
+  * edit approopriate configs in ``<env_dir>/conf``(especially ``svn.secret`` and ``bv_maker.cfg``) if needed
+  * set the `bin` subdirectory of the *environment* directory in your `PATH` environment variable (can be done in a `.bash_profile` or `.bashrc` init file)
+  * build using ``bv_maker``
+  
+  Some help about configuration is available on the [BrainVisa website](https://new.brainvisa.info/download.htmlconfiguration.html)
 
-* on host system
+* on host system (more difficult)
   * Get [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html)
   * [configure sources](http://brainvisa.info/brainvisa-cmake/compile_existing.html#edit-bv-maker-configuration-file)
   * install all needed thirdparty libraries dependencies (may be fastidious)
