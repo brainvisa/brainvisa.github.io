@@ -326,14 +326,17 @@ Starting from BrainVisa 5.0, users will install the BrainVisa distribution as vi
 ### Installing a toolbox in BrainVisa
 
 Toolboxes will be released as ZIP files which will be unpacked on top of an existing BrainVisa distribution.
-Container image distributions are read-only by default (singularity .sif files), but there are options for users to copy the distribution on the host filesystem with read/write permissions, using the `bv` configuration user interface. This `bv` install interface also allows to download additional *distributions* (*distro*), which is one way to install toolboxes if they are available on the BrainVisa web site, or at another location if their URL is entered there.
+
+Container image distributions are read-only by default (singularity `.sif` files), but there are options for users to copy the distribution on the host filesystem with read/write permissions, using the `bv` configuration user interface. This `bv` install interface also allows to download additional *distributions* (*distro*), which is one way to install toolboxes if they are available on the BrainVisa web site, or at another location if their URL is entered there.
 
 To release a toolbox, a developer thus has to make a ZIP file containing the files to be added on top of the BrainVisa distribution.
 
 ### Creating a toolbox release
 
 When developing inside `casa-distro`, the build infrastrutcture is the same as the official BrainVisa release, thus compatibility is ensured.
+
 Using `bv_maker` to build projects, the toolbox files should be handled in the infrastructure.
+
 The developer has to copy the built files into an install directory, and zip its contents. From the build directory, if the toolbox project is named `toolbox` for instance, it is done using the following commands:
 
     make install-toolbox BRAINVISA_INSTALL_PREFIX=/casa/host/install
@@ -353,8 +356,9 @@ This case is not really automated up to now.
   * VirtualBox user installs are read-write: users will be able to install the additional software in their BrainVISA image, possibly using the required permissions
   * Singularity user install images are read-only: users will need to convert the image into read-write, or to use a singularity overlay, before proceeding with the toolbox installation:
   
-      singularity build --writable brainvisa-5.0.0-system brainvisa-5.0.0.sif
+        singularity build --sandbox brainvisa-5.0.0-system brainvisa-5.0.0.sif
   
-  They will also need to edit their *environment* config file (`/casa/host/conf/casa_distro.json` inside containers), either using the `bv` configuration interface, or manually, to use the writable image instead of the initial `.sif` file.
+  They will also need to edit their *environment* config file (`/casa/host/conf/casa_distro.json` inside containers), either using the `bv` configuration interface, or manually, to use the writable image instead of the initial `.sif` file, and to add the container option `--writable` to actually allow write permissions in it.
+  This procedure is not handled by casa-distro yet.
 
 * Then the toolbox installation procedure may provide an install script which will install the required packages into the system.
