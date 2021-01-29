@@ -25,7 +25,7 @@ This can be done either using [casa-distro](http://brainvisa.info/casa-distro/in
     * follow the instructions on this page to setup a developer *environment* from the image
   * Alternative 2:
     * get [casa-distro](http://brainvisa.info/casa-distro/index.html)
-    * create a *developer environment*, for instance:
+    * create a [developer environment](https://brainvisa.github.io/casa-distro/concepts.html#environment), for instance:
           
           casa_distro setup_dev distro=opensource system=ubuntu-18.04 branch=master
   * edit approopriate configs in ``<env_dir>/conf``(especially ``svn.secret`` and ``bv_maker.cfg``) if needed
@@ -79,7 +79,7 @@ what bv_maker sources does / should do:
 * fetch all remotes
 * use git-lfs if available
 * initialize on origin/[branch] (new), formerly: on a detached branch
-* **\[TODO]** fast-forward from upstream (personal fork/branch)
+* fast-forward from upstream (personal fork/branch)
 * fast-forward from origin/[branch]
 * **\[TODO]** fast-forward all local branches
 
@@ -118,11 +118,9 @@ For client repositories created using bv_maker 2 and now used with bv_maker 3, t
 Helper tools
 ------------
 
-**\[TODO]:**
-
     bv_maker status
 
-will show the status of source branches in multiple projects (current branch, modified code, staged changes, local commits not pushed to a remote, diverging branches and remotes...)
+shows the status of source branches in multiple projects (current branch, modified code, staged changes, local commits not pushed to a remote, diverging branches and remotes...)
 
 There is also possibility to use [vcstool](https://github.com/dirk-thomas/vcstool)
 
@@ -320,3 +318,43 @@ The last option is to make git store credentials **unencrypted** in the .git dir
 
     git config credential.helper store
 
+Releasing toolboxes
+-------------------
+
+Starting from BrainVisa 5.0, users will install the BrainVisa distribution as virtual machine or container images. The older installer is gone, so is the modularity (nobody was actually using the modular struture which was very difficult to maintain, and no toolbox developer have actually used it to distribute their toolbox).
+
+### Installing a toolbox in BrainVisa
+
+Toolboxes will be released as ZIP files which will be unpacked on top of an existing BrainVisa distribution.
+Container image distributions are read-only by default (singularity .sif files), but there are options for users to copy the distribution on the host filesystem with read/write permissions, using the `bv` configuration user interface. This `bv` install interface also allows to download additional *distributions* (*distro*), which is one way to install toolboxes if they are available on the BrainVisa web site, or at another location if their URL is entered there.
+
+To release a toolbox, a developer thus has to make a ZIP file containing the files to be added on top of the BrainVisa distribution.
+
+### Creating a toolbox release
+
+When developing inside `casa-distro`, the build infrastrutcture is the same as the official BrainVisa release, thus compatibility is ensured.
+Using `bv_maker` to build projects, the toolbox files should be handled in the infrastructure.
+The developer has to copy the built files into an install directory, and zip its contents. From the build directory, if the toolbox project is named `toolbox` for instance, it is done using the following commands:
+
+    make install-toolbox BRAINVISA_INSTALL_PREFIX=/casa/host/install
+    cd /casa/host/install
+    zip -r ../toolbox-5.0.0-ubuntu-18.04.zip *
+    
+(here in this example, we want to release the toolbox for the version `5.0.0` of BrainVisa, and we are buiding in a container based on an Ubuntu 18.04 system).
+
+Then publish the ZIP file, and users just need to download it and unzip it into their read/write install directory, which is `/casa/host/install/` in singularity distributions, and can be `/casa/install` in VirtualBox distributions. As said before, installig can also be handled by the `bv` GUI install options, if the toolbox can be downloaded in the expected directories tree in a web server.
+
+#### What if additional third-party software or libraries are required for the toolbox
+
+This case is not really automated up to now.
+
+* Either the software can be installed in the install directory `/casa/host/install` of the toolbox developer, maybe in `/casa/host/install/bin`, `/casa/host/install/lib`, `/casa/host/install/python` etc. before zipping the contents. In this situation they will be included in the toolbox release and will get installed correctly in users environments.
+* Or they need system-side install (maybe `apt-get` commands, or install scripts, possibly with admin permissions).
+  * VirtualBox user installs are read-write: users will be able to install the additional software in their BrainVISA image, possibly using the required permissions
+  * Singularity user install images are read-only: users will need to convert the image into read-write, or to use a singularity overlay, before proceeding with the toolbox installation:
+  
+      singularity build --writable brainvisa-5.0.0-system brainvisa-5.0.0.sif
+  
+  They will also need to edit their *environment* config file (`/casa/host/conf/casa_distro.json` inside containers), either using the `bv` configuration interface, or manually, to use the writable image instead of the initial `.sif` file.
+
+* Then the toolbox installation procedure may provide an install script which will install the required packages into the system.
