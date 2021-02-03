@@ -317,6 +317,8 @@ Otherwise it is possible to set individually the git remote URLs to use *ssh* ra
 The last option is to make git store credentials **unencrypted** in the .git directory of the project. You have to do so for each project, and in *brainvisa-cmake*, each declared branch (bug_fix / trunk etc.) since each is a separate clone of the git repos. Then on the next update (`bv_maker sources`) git will ask for username and password, still for each project directory, and then store them and don't ask again the next time:
 
     git config credential.helper store
+    
+Note that, when developing in [Casa-Distro containers](https://brainvisa.github.io/casa-distro), it is still possible to share the personal ssh keys, see [the Casa-Distro technical doc](https://brainvisa.github.io/casa-distro/technical.html)
 
 Releasing toolboxes
 -------------------
