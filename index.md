@@ -69,19 +69,18 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 ## API
 
 * casa-distro
-  * casa-distro (python)
-    * Sources repository: https://brainvisa.info/casa-distro/
-  * brainvisa-cmake (cmake, python)
-* aims and pyaims:
-  * aimsdata (C++)
-  * pyaims (pythn)
-  * aimsalgo (C++)
-  * pyaimsalgo (python)
-  * cartodata (C++)
-  * soma-io (C++)
-  * cartobase (C++)
-  * soma-base (python)
-  * pyaims (python)
+  * [casa-distro](https://brainvisa.info/capsul/api/index.html) (python)
+    * [Sources repository](https://brainvisa.info/casa-distro/)
+  * [brainvisa-cmake](* Sources repository: httsp://brainvisa.info/casa-distro/) (cmake, python)
+* [aims and pyaims:](https://brainvisa.info/aimsdata/user_doc/index.html)
+  * [pyaims](https://brainvisa.info/pyaims/sphinx/index.html) (pythn)
+  * [aimsdata](https://brainvisa.info/aimsdata/doxygen/index.html) (C++)
+  * [aimsalgo](https://brainvisa.info/aimsalgo/doxygen/index.html) (C++)
+  * [cartodata](https://brainvisa.info/cartodata/doxygen/index.html#cartodata) (C++)
+  * [soma-io](https://brainvisa.info/soma-io/doxygen/index.html#somaio) (C++)
+  * [cartobase](https://brainvisa.info/cartobase/doxygen/index.html#cartobase) (C++)
+  * [graph](https://brainvisa.info/graph/doxygen/index.html#graph) (C++)
+  * [soma-base](https://brainvisa.info/soma-base/sphinx/index.html) (python)
 * anatomist
   * anatomist (C++)
   * pyanatomist (python)
