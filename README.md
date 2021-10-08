@@ -1,6 +1,6 @@
 # BrainVISA users and developers communication
 
-This project will host both user interactions via the [disucssions](https://github.com/brainvisa/brainvisa.github.io/discussions) section,
+This project will host both user interactions via the [discussions](https://github.com/brainvisa/brainvisa.github.io/discussions) section,
 and developers information.
 
 ## Users
