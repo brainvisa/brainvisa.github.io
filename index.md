@@ -68,26 +68,48 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 
 ## API
 
-* casa-distro
+* [casa-distro](https://brainvisa.info/casa-distro/)
   * [casa-distro](https://brainvisa.info/capsul/api/index.html) (python)
-    * [Sources repository](https://brainvisa.info/casa-distro/)
-  * [brainvisa-cmake](* Sources repository: httsp://brainvisa.info/casa-distro/) (cmake, python)
+    * [Sources repository](https://github.com/brainvisa/casa-distro)
+    * [master branch doc]
+  * [brainvisa-cmake]( https://brainvisa.info/casa-distro/) (cmake, python)
+    * [Sources repository](https://github.com/brainvisa/brainvisa-cmake)
+    * [master branch doc]
 * [aims and pyaims:](https://brainvisa.info/aimsdata/user_doc/index.html)
   * [pyaims](https://brainvisa.info/pyaims/sphinx/index.html) (pythn)
+    * [Sources repository](https://github.com/brainvisa/aims-free)
   * [aimsdata](https://brainvisa.info/aimsdata/doxygen/index.html) (C++)
+    * [Sources repository](https://github.com/brainvisa/aims-free)
   * [aimsalgo](https://brainvisa.info/aimsalgo/doxygen/index.html) (C++)
+    * [Sources repository](https://github.com/brainvisa/aims-free)
   * [cartodata](https://brainvisa.info/cartodata/doxygen/index.html#cartodata) (C++)
+    * [Sources repository](https://github.com/brainvisa/aims-free)
   * [soma-io](https://brainvisa.info/soma-io/doxygen/index.html#somaio) (C++)
+    * [Sources repository](https://github.com/brainvisa/soma-io)
   * [cartobase](https://brainvisa.info/cartobase/doxygen/index.html#cartobase) (C++)
+    * [Sources repository](https://github.com/brainvisa/soma-io)
   * [graph](https://brainvisa.info/graph/doxygen/index.html#graph) (C++)
+    * [Sources repository](https://github.com/brainvisa/aims-free)
   * [soma-base](https://brainvisa.info/soma-base/sphinx/index.html) (python)
-* anatomist
-  * anatomist (C++)
-  * pyanatomist (python)
-* capsul
-  * capsul (python)
-  * soma-workflow (python)
-* axon
+    * [Sources repository](https://github.com/populse/soma-base)
+    * [master branch doc]
+* [anatomist](https://brainvisa.info/anatomist/dev_doc/index.html)
+  * [anatomist](https://brainvisa.info/anatomist/doxygen/index.html) (C++)
+    * [Sources repository](https://github.com/brainvisa/anatomist-free)
+  * [pyanatomist](https://brainvisa.info/pyanatomist/sphinx/index.html) (python)
+    * [Sources repository](https://github.com/brainvisa/anatomist-gpl)
+* [capsul](https://brainvisa.info/capsul/index.html)
+  * [capsul](https://brainvisa.info/capsul/index.html) (python)
+    * [Sources repository](https://github.com/populse/capsul)
+    * [master branch doc]
+  * [soma-workflow](https://brainvisa.info/soma-workflow/sphinx/index.html) (python)
+    * [Sources repository](https://github.com/populse/soma-workflow)
+    * [master branch doc]
+* [axon](https://brainvisa.info/web/infrastructure.html#)
+  * [API doc](https://brainvisa.info/axon/dev_doc/)
+  * [Sources repository](https://github.com/brainvisa/axon)
+  * https://brainvisa.info/axon-5.0/Programming_with_brainvisa.pdf
+
 
 ## Support
 
