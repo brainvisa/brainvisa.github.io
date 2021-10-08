@@ -16,10 +16,10 @@ BrainVISA contains a set of projects, each project may be divided into several c
   
 Development, distribution infrastructure in a containerized environment (using Singularity or VirtualBox). Used to install BrainVisa, or install a developer environment, as explained in [BrainVisa download page](https://brainvisa.info/web/download.html).
 
-* Stable doc: https://brainvisa.info/casa-distro/index.html
-* Devel (master) doc: https://brainvisa.github.io/casa-distro/
+* [Stable doc](https://brainvisa.info/casa-distro/index.html)
+* [Devel (master) doc](https://brainvisa.github.io/casa-distro/)
 
-* [brainvisa-cmake](httsp://brainvisa.info/brainvisa-cmake/index.html): compilation, testing etc.
+* [brainvisa-cmake](https://brainvisa.info/brainvisa-cmake/index.html): compilation, testing etc.
 
 ### Aims:
 
