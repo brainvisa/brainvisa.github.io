@@ -4,12 +4,56 @@ title: BrainVISA developers' website
 
 # {{page.title}}
 
-**BrainVISA**: a neuroimaging software platform for mass data analysis
+## Overview
 
-**All the information for users of BrainVISA is on [brainvisa.info](http://brainvisa.info/).** This website is meant for developers.
+**BrainVISA** is a neuroimaging software platform for mass data analysis
+
+**All the information for users of BrainVISA is on [brainvisa.info](https://brainvisa.info/).** This website is meant for developers. It focuses on developers aspects: installing, building, developmlent documentations and APIs.
+
+BrainVISA contains a set of projects, each project may be divided into several components. About 50 components are currently part of the BrainVISA environment.
+
+### casa-distro:
+  
+Development, distribution infrastructure in a containerized environment (using Singularity or VirtualBox). Used to install BrainVisa, or install a developer environment, as explained in [BrainVisa download page](https://brainvisa.info/web/download.html).
+
+* Stable doc: https://brainvisa.info/casa-distro/index.html
+* Devel (master) doc: https://brainvisa.github.io/casa-distro/
+
+* [brainvisa-cmake](httsp://brainvisa.info/brainvisa-cmake/index.html): compilation, testing etc.
+
+### Aims:
+
+Neuroimaging data manipulation, image processing (C++ and Python)
+
+* [AIMS](https://brainvisa.info/aimsdata/user_doc/index.html)
+
+### Anatomist
+
+Interactive 3D neuroimaging data visualization
+
+* [Anatomist](https://brainvisa.info/web/anatomist.html)
+
+### Capsul / Soma-Workflow
+
+Pipelining and distributed calculation (Python)
+
+* [capsul](https://brainvisa.info/capsul/index.html): pipelining
+* [soma-workflow](https://brainvisa.info/web/soma-workflow/index.html)
+
+### Morphologist
+
+Brain segmentation, cortical sulci analysis and morphometry. This is the primary applicative toolbox of BrainVisa.
+
+* [Morphologist](https://brainvisa.info/web/morphologist.html)
+
+### Axon
+
+The older pipelining infrastructure and GUI, now obsolete, but still widely used...
+
+* [Axon](https://brainvisa.info/axon/user_doc/index.html)
 
 
-## Topics
+## Contributor's guide
 
 [Developing in BrainVISA environment](developing.md)
 
@@ -17,29 +61,39 @@ title: BrainVISA developers' website
 
 [Release policy](release_policy.md)
 
+## Tutorials
 
-## Structure of BrainVISA
+* pyaims
+* pyanatomist
 
-BrainVISA contains a set of projects, each project may be divided into several components. About 50 components are currently part of the BrainVISA environment.
+## API
 
-Main applicative projects:
+* casa-distro
+  * casa-distro (python)
+    * Sources repository: https://brainvisa.info/casa-distro/
+  * brainvisa-cmake (cmake, python)
+* aims and pyaims:
+  * aimsdata (C++)
+  * pyaims (pythn)
+  * aimsalgo (C++)
+  * pyaimsalgo (python)
+  * cartodata (C++)
+  * soma-io (C++)
+  * cartobase (C++)
+  * soma-base (python)
+  * pyaims (python)
+* anatomist
+  * anatomist (C++)
+  * pyanatomist (python)
+* capsul
+  * capsul (python)
+  * soma-workflow (python)
+* axon
 
-* [Morphologist](http://brainvisa.info/web/morphologist.html): brain segmentation and sulcal morphometry
-* Several other processing tools and toolboxes
-* [Anatomist](http://brainvisa.info/web/anatomist.html): Interactive 3D neuroimaging data visualization
-* [Axon](http://brainvisa.info/axon/user_doc/index.html): Software and data organization
-* [AIMS](http://brainvisa.info/aimsdata/user_doc/index.html): neuroimaging data manipulation, image processing
+## Support
 
-In addition to applicative projects, some infrastructure projects help managing compilation and cross-compilation, porting, testing, packaging, deployment, and releases of BrainVISA distributions:
+[Support and questions](https://github.com/brainvisa/brainvisa.github.io/discussions)
 
-* [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html): compilation, testing etc.
-* [brainvisa-installer](http://brainvisa.info/brainvisa-installer/index.html): packaging and installation
-* [casa-distro](http://brainvisa.info/casa-distro/index.html): virtualization in containers of build and packaging systems
-
-This developer site focuses more on the latter infrastructure tools, and on topics of how to develop in BrainVISA development environment, how to release the software packages etc.
-
-There is also a [developer section](http://brainvisa.info/web/infrastructure.html) on BrainVisa website, which also deals about the various libraries APIs to develop applications.
-
-## Developers docs
+-old -
 
 [Porting projects to Qt5 and Python3](porting_projects.md)
