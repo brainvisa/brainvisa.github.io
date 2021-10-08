@@ -42,4 +42,4 @@ There is also a [developer section](http://brainvisa.info/web/infrastructure.htm
 
 ## Developers docs
 
-[Porting prohjects to Qt5 and Python3](porting_projects.md)
+[Porting projects to Qt5 and Python3](porting_projects.md)
