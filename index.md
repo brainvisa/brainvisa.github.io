@@ -69,14 +69,13 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 ## API
 
 * [casa-distro](https://brainvisa.info/casa-distro/)
-  * [casa-distro](https://brainvisa.info/capsul/api/index.html) (python)
-    * [Sources repository](https://github.com/brainvisa/casa-distro)
-    * [master branch doc]
-  * [brainvisa-cmake]( https://brainvisa.info/casa-distro/) (cmake, python)
+  * [Sources repository](https://github.com/brainvisa/casa-distro)
+  * [master branch doc]
+  * [brainvisa-cmake](https://brainvisa.info/brainvisa-cmake/index.html) (cmake, python)
     * [Sources repository](https://github.com/brainvisa/brainvisa-cmake)
     * [master branch doc]
 * [aims and pyaims:](https://brainvisa.info/aimsdata/user_doc/index.html)
-  * [pyaims](https://brainvisa.info/pyaims/sphinx/index.html) (pythn)
+  * [pyaims](https://brainvisa.info/pyaims/sphinx/index.html) (python)
     * [Sources repository](https://github.com/brainvisa/aims-free)
   * [aimsdata](https://brainvisa.info/aimsdata/doxygen/index.html) (C++)
     * [Sources repository](https://github.com/brainvisa/aims-free)
@@ -108,7 +107,7 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 * [axon](https://brainvisa.info/web/infrastructure.html#)
   * [API doc](https://brainvisa.info/axon/dev_doc/)
   * [Sources repository](https://github.com/brainvisa/axon)
-  * https://brainvisa.info/axon-5.0/Programming_with_brainvisa.pdf
+  * [Programming doc](https://brainvisa.info/axon/Programming_with_brainvisa.pdf)
 
 
 ## Support
