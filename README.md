@@ -13,5 +13,5 @@ Questions can be searched for or posted in the [discussions section](https://git
 
 This project also holds docs for developers:
 
-Read this doc here: https://brainvisa.github.io/
+Read this doc here: https://dev.brainvisa.info/
 
