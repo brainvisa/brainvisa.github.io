@@ -46,6 +46,9 @@ assignees: ''
 - [ ] Create tags with `bv_tag_release.py`
 
 - [ ] Edit the website to announce the new release
+  - [ ] web project sources (on bioproj, cf also changelog item above)
+  - [ ] log on the web server, rebuild the web site in the casa-distro installed there
+  - [ ] publish the web site using the publish script
 
 - [ ] Deploy the `cea` release:
   - [ ] Copy `brainvisa-cea-*.sif` and the associated `.json` into `/i2bm/brainvisa`
