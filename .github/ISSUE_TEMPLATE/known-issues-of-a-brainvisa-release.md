@@ -1,6 +1,7 @@
 ---
 name: Known issues of a BrainVISA release
-about: RESERVED for the @brainvisa/admin team to keep track of known issues with released versions
+about: RESERVED for the @brainvisa/admin team to keep track of known issues with released
+  versions
 title: Known issues for BrainVISA x.y.z
 labels: ''
 assignees: ''
