@@ -1,6 +1,6 @@
 ---
-name: Reserved for BrainVISA admins: release check-list
-about: For the @brainvisa/admin team to coordinate a release
+name: Release check-list
+about: RESERVED for the @brainvisa/admin team to coordinate a release
 title: Make the BrainVISA [x.y.z] release
 labels: ''
 assignees: ''
@@ -13,10 +13,11 @@ assignees: ''
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
-- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
+- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen) (https://github.com/brainvisa/brainvisa.github.io/issues/54)
   - [ ] https://github.com/brainvisa/aims-free/blob/5.0/aimsdata/doc/html/en/changelog.html
   - [ ] https://github.com/brainvisa/axon/blob/5.0/doc/en/help/changelog.html
   - [ ] https://github.com/brainvisa/anatomist-free/blob/5.0/doc/html/en/changelog.html
+  - [ ] https://bioproj.extra.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.rst
 
 - [ ] Run a last build to update the changelogs 
   - [ ] `bv_maker sources doc` in the `brainvisa` distro
@@ -38,10 +39,10 @@ assignees: ''
     - [ ] Publish the image on the BrainVISA web site
 
   - `sif` image for the `cea` distro
-    - [ ] Create the image with `casa_distro_admin create_user_image`
+    - [ ] Create the image with `casa_distro_admin create_user_image` (beware to name it `brainvisa-cea-` and not just `cea-`)
 
   - `ova` image for the `cea` distro
-    - [ ] Create the image with `casa_distro_admin create_us
+    - [ ] Create the image with `casa_distro_admin create_user_image` (beware to name it `brainvisa-cea-` and not just `cea-`)
 
 - [ ] Create tags with `bv_tag_release.py`
 
@@ -59,6 +60,10 @@ assignees: ''
   - [ ] Make it the default version: `ln -sfT brainvisa-cea-x.y.z/ /i2bm/brainvisa/brainvisa`
   - [ ] Copy `brainvisa-cea-*.ova` and the associated `.json` into `/i2bm/brainvisa`
   - [ ] Install the `ova` on a non-Linux machine and verify that it works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
+
+- [ ] [Open a new GitHub issue for known issues](https://github.com/brainvisa/brainvisa.github.io/issues/new?template=known-issues-of-a-brainvisa-release.md&title=Known+issues+for+BrainVISA+x.y.z)
+
+- [ ] Close [the old GitHub known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
 
 - [ ] Make an announcement [on the GitHub discussions](https://github.com/brainvisa/brainvisa.github.io/discussions/new)
 
