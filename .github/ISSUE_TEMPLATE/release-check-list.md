@@ -1,5 +1,5 @@
 ---
-name: [Reserved for BrainVISA admins: release check-list]
+name: Reserved for BrainVISA admins: release check-list
 about: For the @brainvisa/admin team to coordinate a release
 title: Make the BrainVISA [x.y.z] release
 labels: ''
