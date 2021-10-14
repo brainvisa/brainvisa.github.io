@@ -25,40 +25,44 @@ assignees: ''
 
 - [ ] Create, test, and publish/deploy the images
   - `sif` image for the `brainvisa` distro
-    - [ ] Create the image with `casa_distro_admin create_user_image`
+    - [ ] Create the image with `./cea-5.0-5.0/bin/casa_distro_admin create_user_image version=5.0.3 container_type=singularity distro=brainvisa`
     - [ ] Verify that the image works
       - Install the image
       - Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
     - [ ] Publish the image on the BrainVISA web site
 
   - `ova` image for the `brainvisa` distro
-    - [ ] Create the image with `casa_distro_admin create_user_image`
+    - [ ] Create the image with `./brainvisa-5.0-5.0/bin/casa_distro_admin create_user_image version=5.0.3 base_directory=/volatile/a-sac-ns-brainvisa/bbi-brainvisa-5.0/brainvisa-5.0-5.0 install=no container_type=vbox base_image=/volatile/a-sac-ns-brainvisa/bbi-brainvisa-5.0/casa-run-5.0-2.ova`
     - [ ] Verify that the image works
       - Install the image
       - Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
     - [ ] Publish the image on the BrainVISA web site
 
   - `sif` image for the `cea` distro
-    - [ ] Create the image with `casa_distro_admin create_user_image` (beware to name it `brainvisa-cea-` and not just `cea-`)
+    - [ ] Create the image with `./cea-5.0-5.0/bin/casa_distro_admin create_user_image version=5.0.3 name=brainvisa-cea-5.0.3 container_type=singularity distro=cea`
 
   - `ova` image for the `cea` distro
     - [ ] Create the image with `casa_distro_admin create_user_image` (beware to name it `brainvisa-cea-` and not just `cea-`)
 
 - [ ] Create tags with `bv_tag_release.py`
+- [ ] Create svn project (datamind, snapbase) tags using command (replace <project> with project name) `svn copy https://bioproj.extra.cea.fr/neurosvn/brainvisa/<project>/branches/5.0 https://bioproj.extra.cea.fr/neurosvn/brainvisa/<project>/tags/5.0.3
+`
 
 - [ ] Edit the website to announce the new release
   - [ ] web project sources (on bioproj, cf also changelog item above)
-  - [ ] log on the web server, rebuild the web site in the casa-distro installed there
-  - [ ] publish the web site using the publish script
+  - [ ] log on the web server, rebuild the web site in the casa-distro installed there: `ssh web`, then in the server:
+    - [ ] `web_build/bin/bv bv_maker`
+    - [ ] publish the web site using the publish script: `./web-build/src/communication/web/5.0/scripts/bv_publish_web /var/www/html/brainvisa.info`
 
 - [ ] Deploy the `cea` release:
-  - [ ] Copy `brainvisa-cea-*.sif` and the associated `.json` into `/i2bm/brainvisa`
+  - [ ] Copy `brainvisa-cea-*.sif` and the associated `.json` into `/i2bm/brainvisa` and set their permissions (`chmod 444`)
   - [ ] Create a new directory `/i2bm/brainvisa/brainvisa-cea-x.y.z` and install the Singularity release in there (`singularity run --bind ...`)
+  - [ ] Remove the home directory to enable per-user home: `rm -r /i2bm/brainvisa/brainvisa-cea-x.y.z/home/`
   - [ ] Edit `/i2bm/brainvisa/brainvisa-cea-x.y.z/conf/casa_distro.json` and add `"container_failure_message": "Singularity could not start. BrainVISA needs singularity version %(singularity_version)s or later. You can install it (as admin) by typing in a terminal:\n. /etc/os-release && sudo dpkg -i /i2bm/brainvisa/singularity-latest-${ID}-${VERSION_ID}_$(dpkg --print-architecture).deb"`
     - [ ] By the way, check that the `/i2bm/brainvisa/singularity-latest*` symlinks are working and up-to-date
   - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
   - [ ] Make it the default version: `ln -sfT brainvisa-cea-x.y.z/ /i2bm/brainvisa/brainvisa`
-  - [ ] Copy `brainvisa-cea-*.ova` and the associated `.json` into `/i2bm/brainvisa`
+  - [ ] Copy `brainvisa-cea-*.ova` and the associated `.json` into `/i2bm/brainvisa` and set their permissions (`chmod 444`)
   - [ ] Install the `ova` on a non-Linux machine and verify that it works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
 
 - [ ] [Open a new GitHub issue for known issues](https://github.com/brainvisa/brainvisa.github.io/issues/new?template=known-issues-of-a-brainvisa-release.md&title=Known+issues+for+BrainVISA+x.y.z)
