@@ -48,8 +48,9 @@ assignees: ''
 
 - [ ] Edit the website to announce the new release
   - [ ] web project sources (on bioproj, cf also changelog item above)
-  - [ ] log on the web server, rebuild the web site in the casa-distro installed there
-  - [ ] publish the web site using the publish script
+  - [ ] log on the web server, rebuild the web site in the casa-distro installed there: `ssh web`, then in the server:
+    - [ ] `web_build/bin/bv bv_maker`
+    - [ ] publish the web site using the publish script: `./web-build/src/communication/web/5.0/scripts/bv_publish_web /var/www/html/brainvisa.info`
 
 - [ ] Deploy the `cea` release:
   - [ ] Copy `brainvisa-cea-*.sif` and the associated `.json` into `/i2bm/brainvisa`
