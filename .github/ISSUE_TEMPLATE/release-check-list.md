@@ -17,6 +17,7 @@ assignees: ''
   - [ ] https://github.com/brainvisa/aims-free/blob/5.0/aimsdata/doc/html/en/changelog.html
   - [ ] https://github.com/brainvisa/axon/blob/5.0/doc/en/help/changelog.html
   - [ ] https://github.com/brainvisa/anatomist-free/blob/5.0/doc/html/en/changelog.html
+  - [ ] https://bioproj.extra.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.rst
 
 - [ ] Run a last build to update the changelogs 
   - [ ] `bv_maker sources doc` in the `brainvisa` distro
