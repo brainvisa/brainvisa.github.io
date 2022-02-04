@@ -114,7 +114,7 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 
 [Support and questions](https://github.com/brainvisa/brainvisa.github.io/discussions)
 
-## Misc helps
+## Misc helps
 
 [Using clusters and the TGCC center](clusters.md)
 
