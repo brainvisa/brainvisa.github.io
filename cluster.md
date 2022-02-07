@@ -1,9 +1,6 @@
----
-Using a calculation center
----
+# Using a calculation center
 
-TGCC (CEA calculation center)
------------------------------
+## TGCC (CEA calculation center)
 
 ### Importing BrainVisa / Casa-distro virtual images
 
