@@ -116,7 +116,7 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 
 ## Misc helps
 
-[Using clusters and the TGCC center](clusters.md)
+[Using clusters and the TGCC center](cluster.md)
 
 -old -
 
