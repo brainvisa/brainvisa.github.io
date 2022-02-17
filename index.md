@@ -118,6 +118,8 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
 
 [Using clusters and the TGCC center](cluster.md)
 
+[Irene specifications](irene.md)
+
 -old -
 
 [Porting projects to Qt5 and Python3](porting_projects.md)
