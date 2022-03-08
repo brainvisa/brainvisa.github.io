@@ -95,7 +95,28 @@ Otherwise the workflow should be configured from the TGCC also.
 
 #### using the GUI
 
-a GUI can in principle be run from the TGCC, using a visualization node running the pcocc container. We have not tried it yet.
+There are 2 ways: using a remote X11 display, or using a remote desktop application.
+
+##### Remote X11 display
+
+* On the login node
+
+You must ssh to the TGCC using the ``-Y`` option to allow X11 forwarding.
+The on the login node you can use graphical commands, like ``gedit``.
+pcocc containers must be run using the ``-e DISPLAY`` option:
+
+    pcocc run -s -e DISPLAY -I brainvisa-5.0.4
+    # then in the interactive shell, you are in the container, for instance:
+    soma_workflow_gui
+
+* In an interactive node with X11 display
+
+It is not recommended to run things on the login node. It is rather recommended to use an interactive computing node. This is done using:
+
+    ccc_mprun -Xfirst -s -p v100l
+
+this opens an interactive shell on a computing node, where graphical commands can be run. **But pcocc does not work in this mode.**
+
 
 #### using the commandline
 
