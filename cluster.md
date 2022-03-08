@@ -117,6 +117,35 @@ It is not recommended to run things on the login node. It is rather recommended 
 
 this opens an interactive shell on a computing node, where graphical commands can be run. **But pcocc does not work in this mode.**
 
+##### Using a remote desktop application
+
+The TGCC has setup a NiceDV access to an interactive computing node:
+
+https://www-fr.ccc.cea.fr/docs/irene/fr/html/toc/fulldoc/Interactive_access.html#remote-desktop-system-service-nicedcv
+
+To run it, from the login node:
+
+    ccc_visu virtual -p v100l
+
+This opens an interactive shell in a computing node. It also prints an URL to connect to, that you can paste in a web browser. After logging in, a gnome desktop will display in the web browser, with all interactive GUI features. If the node has a GPU, GPU and OpenGL will work.
+
+For containers, in this desktop, **a local pcocc will work**:
+
+    pcocc run -s -e DISPLAY -I brainvisa-5.0.4
+    
+This container will allow Cuda to work, as nvidia libraries are exported by pcocc inside it.
+
+However, in our BrainVisa / casa-distro containers, up to now we have not succeeded in making hardware 3D rendering work: even with nvidia libs enabled, ``glxinfo`` prints errors about "no matching fbConfigs or visuals found". We have not determined the reason why it does not to work (library incompatibility ? however Cuda does work, so libs should be OK...)
+
+The only workaround we have managed to do is to get back to software rendering, by setting ``/usr/local/lib/mesa`` first in the ``LD_LIBRARY_PATH`` env variable in he container:
+
+    export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH"
+    
+ This can be done in an init script, possibly via automatic detection: for instance the following line will setup software rendering only if ``glxinfo`` does not work by itself:
+ 
+    glxinfo > /dev/null 2>&1 || export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH"
+    
+ We will of course update this document if we find a solution.
 
 #### using the commandline
 
