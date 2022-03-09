@@ -102,7 +102,7 @@ There are 2 ways: using a remote X11 display, or using a remote desktop applicat
 * On the login node
 
 You must ssh to the TGCC using the ``-Y`` option to allow X11 forwarding.
-The on the login node you can use graphical commands, like ``gedit``.
+Then on the login node you can use graphical commands, like ``gedit``.
 pcocc containers must be run using the ``-e DISPLAY`` option:
 
     pcocc run -s -e DISPLAY -I brainvisa-5.0.4
@@ -121,7 +121,7 @@ this opens an interactive shell on a computing node, where graphical commands ca
 
 The TGCC has setup a NiceDV access to an interactive computing node:
 
-https://www-fr.ccc.cea.fr/docs/irene/fr/html/toc/fulldoc/Interactive_access.html#remote-desktop-system-service-nicedcv
+[see their doc (needs VPN or CEA intra network)](https://www-fr.ccc.cea.fr/docs/irene/fr/html/toc/fulldoc/Interactive_access.html#remote-desktop-system-service-nicedcv)
 
 To run it, from the login node:
 
@@ -140,10 +140,12 @@ However, in our BrainVisa / casa-distro containers, up to now we have not succee
 The only workaround we have managed to do is to get back to software rendering, by setting ``/usr/local/lib/mesa`` first in the ``LD_LIBRARY_PATH`` env variable in he container:
 
     export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH"
+
+It can also be needed to set the variable ``MESA_GLX_FORCE_ALPHA`` to avoid a "transparent rendering" problem. Note that using ``glxgears`` the problem seems only partly solved, but it looks better in ``anatomist``.
     
  This can be done in an init script, possibly via automatic detection: for instance the following line will setup software rendering only if ``glxinfo`` does not work by itself:
  
-    glxinfo > /dev/null 2>&1 || export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH"
+    glxinfo > /dev/null 2>&1 || (export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH" && export MESA_GLX_FORCE_ALPHA=1)
     
  We will of course update this document if we find a solution.
 
