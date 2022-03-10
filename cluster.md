@@ -131,23 +131,31 @@ This opens an interactive shell in a computing node. It also prints an URL to co
 
 For containers, in this desktop, **a local pcocc will work**:
 
-    pcocc run -s -e DISPLAY -I brainvisa-5.0.4
+    pcocc run -s -e DISPLAY -M nvidia -I brainvisa-5.0.4
     
 This container will allow Cuda to work, as nvidia libraries are exported by pcocc inside it.
 
-However, in our BrainVisa / casa-distro containers, up to now we have not succeeded in making hardware 3D rendering work: even with nvidia libs enabled, ``glxinfo`` prints errors about "no matching fbConfigs or visuals found". We have not determined the reason why it does not to work (library incompatibility ? however Cuda does work, so libs should be OK...)
+However, in our BrainVisa / casa-distro containers, OpenGL rendering does not work directly. ``glxinfo`` prints errors about "no matching fbConfigs or visuals found".
 
-The only workaround we have managed to do is to get back to software rendering, by setting ``/usr/local/lib/mesa`` first in the ``LD_LIBRARY_PATH`` env variable in he container:
+The solution is to use ``vglrun``: inside the pcocc container (be sure to use the pcocc option ``-M nvidia``), run:
+
+    vglrun glxgears
+
+or:
+
+    vglrun anatomsit
+
+... **Then hardware 3D does work !**
+
+Otherwise, without ``virtualgl``, the other workaround we is to get back to software rendering, by setting ``/usr/local/lib/mesa`` first in the ``LD_LIBRARY_PATH`` env variable in he container:
 
     export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH"
 
-It can also be needed to set the variable ``MESA_GLX_FORCE_ALPHA`` to avoid a "transparent rendering" problem. Note that using ``glxgears`` the problem seems only partly solved, but it looks better in ``anatomist``.
+In this case it can also be needed to set the variable ``MESA_GLX_FORCE_ALPHA`` to avoid a "transparent rendering" problem. Note that using ``glxgears`` the problem seems only partly solved, but it looks better in ``anatomist``.
     
  This can be done in an init script, possibly via automatic detection: for instance the following line will setup software rendering only if ``glxinfo`` does not work by itself:
  
     glxinfo > /dev/null 2>&1 || (export LD_LIBRARY_PATH=/usr/local/lib/mesa:"$LD_LIBRARY_PATH" && export MESA_GLX_FORCE_ALPHA=1)
-    
- We will of course update this document if we find a solution.
 
 #### using the commandline
 
