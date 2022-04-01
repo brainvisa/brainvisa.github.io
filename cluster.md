@@ -31,6 +31,12 @@ Then the image should be in pcocc:
     
 should show it.
 
+### Copy Brainvisa databases with rsync
+
+To copy your already existing Brainvisa database to a TGCC file system, you can use rsync but you may need to add some options:
+
+    rsync -av --copy-unsafe-links --chmod=Dg+s --chown=:YOUR_PROJECT brainvisa_database_directory tgcc:brainvisa_database_tgcc_directory
+
 ### Note about BrainVisa / Soma-Workflow
 
 Normally [BrainVisa](https://brainvisa.info) and [Soma-Workflow](https://populse.github.io/soma-workflow) can run in "client/server mode" from your local machine, and can connect to a computing resource like the TGCC to run jobs. However in this specific facility, it's not recommended to use it this way (actually we don't know if it's allowed or if it would work, plus slurm is currently not supported in Soma-Workflow), because it would run a server on the TGCC login node, which could be seen as a security issue (even if it's running through a secure ssh tunnel). Moreover the number of jobs that can be submitted by a user there is limited. Thus we will not use this mode, but [the MPI mode](https://populse.github.io/soma-workflow/MPI_workflow_runner.html) instead, which runs entirely in a single parallel job.
