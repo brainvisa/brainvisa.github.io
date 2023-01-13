@@ -14,7 +14,7 @@ Thus docker should be installed on the system which performs conversion
 Casa-distro has a docker export function. We can run it from your development computer:
 
     casa_distro_admin convert_image source=brainvisa-5.0.4.sif
-    docker export -o brainvisa-5.0.4.tar brainvisa:5.0.4
+    docker save -o brainvisa-5.0.4.tar brainvisa:5.0.4
     scp brainvisa-5.0.4.tar tgcc:/ccc/workflash/cont003/n4h00003/gaston/
 
 (do not use your $HOME directory on the TGCC side, the quota there is too small to contain images.)
