@@ -21,9 +21,20 @@ Casa-distro has a docker export function. We can run it from your development co
 
 Then log in the TGCC (via ssh), and in a shell there:
 
-    cd /ccc/workflash/cont003/n4h00003/gaston  # this dir is just an example
-    # n4h00003 is the project identifier I am in: use your own instead
-    pcocc image import docker-archive:brainvisa-5.0.4.tar n4h00003:brainvisa-5.0.4
+  - to be done once, if needed: declare a PCOCC repository at a suitable location. The default images repository location is `$CCCWORKDIR/.pcocc-images`. If you want or need to use another location, create or edit the file `$HOME/.pcocc/repos.yaml` and add lines to declare new repositories, like this one:
+      
+        - name: project3
+          path: /ccc/workflash/cont003/n4h00003/n4h00003/.pcocc-images
+    
+    This will declare a repository in `/ccc/workflash/cont003/n4h00003/n4h00003/.pcocc-images`, named `project3` (which, here, is shared between users of the project). Several repositories may be declared. You can check that they are taken into account using the command:
+    
+        pcocc image repo list
+
+  - import the `.tar` image in PCOCC:
+
+        cd /ccc/workflash/cont003/n4h00003/gaston  # this dir is just an example
+        # n4h00003 is the project identifier I am in: use your own instead
+        pcocc image import docker-archive:brainvisa-5.0.4.tar n4h00003:brainvisa-5.0.4
     
 Then the image should be in pcocc:
 
