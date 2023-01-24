@@ -47,8 +47,8 @@ Brainvisa/Soma-workflow can run using the MPI scheduler mode in order to run a w
 
 pcocc called with the correct options will mount the MPI library directory, but we must setup the PATHS in the image. We use the hook in casa-distro images which sources `/casa/start_scripts/init.sh` if it is present
 
-    mkdir $CCC_WORKDIR/casa_ini_scripts
-    cat << EOF > $CCC_WORKDIR/casa_ini_scripts/init.sh
+    mkdir $CCCWORKDIR/casa_ini_scripts
+    cat << EOF > $CCCWORKDIR/casa_ini_scripts/init.sh
     export MPI_LIBDIR=/ccc/products/openmpi-4.0.5/intel--20.0.0/default/lib
     export LD_LIBRARY_PATH=$MPI_LIBDIR:"$LD_LIBRARY_PATH"
     export BRIDGE_MPRUN_PRELOAD=${BRIDGE_MPRUN_PRELOAD}:${MPI_LIBDIR}/libmpi.so  # probably not needed ?
