@@ -2,6 +2,37 @@
 
 ## TGCC (CEA calculation center)
 
+### TGCC basics
+
+The full doc is on the TGCC intranet: https://www-fr.ccc.cea.fr/ (requires login/password to access it).
+
+#### CCC commands
+
+In a few words, they provide a set of commands beginning with `ccc_`. Some useful ones:
+
+- `ccc_mpinfo`: list of available nodes, partitions, with CPU/cores, memory, GPU specs
+- `ccc_myproject`: list of projects you belong to, with allocated resource quotas (CPU hours you can use)
+- `ccc_quota`: disk quotas for several filesystem locations
+- `ccc_msub`: submit a job for processing on processing nodes
+- `ccc_mprun`: parallel launch interface (for MPI especially)
+- `ccc_mstat` / `ccc_mpstat` / `ccc_mpp`: print running jobs (use `-u` to see only yours) (variants of the same, I suppose)
+- `ccc_mdel`: cancel or kill a job
+
+#### Disk spaces
+
+- `$HOME`: home directory, relatively small space (typically 5 Gb)
+- `$CCCSCRATCHDIR`: larger space (in Tb, for instance 20 Tb), hybrid SSD / HDD.
+- `$CCCWORKDIR`: flash disk, shared between nodes. In the docs it claims 4 times less bandwidth than SCRATCH but the doc may be utdated (it doesn't speak about flask for it, whereas it has been upgraded).
+- `$CCCSTOREDIR`: storage area, designed for large files (inodes quotas are small)
+
+There are also shared spaces for projects: `/ccc/workflash/cont003/n4h00003/n4h00003` etc (last subdirectory is the name of a project instead of your user name)
+
+To set/switch between spaces for different projects, use the command:
+
+    module switch dfldatadir/<project>
+
+You need to do it before using the space, which means before using a PCOCC container which resides on this space.
+
 ### Importing BrainVisa / Casa-distro virtual images
 
 We use singularity images.
