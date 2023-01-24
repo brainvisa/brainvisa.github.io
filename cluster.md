@@ -23,10 +23,10 @@ Then log in the TGCC (via ssh), and in a shell there:
 
   - to be done once, if needed: declare a PCOCC repository at a suitable location. The default images repository location is `$CCCWORKDIR/.pcocc-images`. If you want or need to use another location, create or edit the file `$HOME/.pcocc/repos.yaml` and add lines to declare new repositories, like this one:
       
-        - name: project3
+        - name: n4h00003
           path: /ccc/workflash/cont003/n4h00003/n4h00003/.pcocc-images
     
-    This will declare a repository in `/ccc/workflash/cont003/n4h00003/n4h00003/.pcocc-images`, named `project3` (which, here, is shared between users of the project). Several repositories may be declared. You can check that they are taken into account using the command:
+    This will declare a repository in `/ccc/workflash/cont003/n4h00003/n4h00003/.pcocc-images`, named `n4h00003` (which, here, is shared between users of the project). Several repositories may be declared. You can check that they are taken into account using the command:
     
         pcocc image repo list
 
