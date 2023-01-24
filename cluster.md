@@ -4,7 +4,7 @@
 
 ### TGCC basics
 
-The full doc is on the TGCC intranet: https://www-fr.ccc.cea.fr/ (requires login/password to access it).
+The full doc is on the TGCC intranet: [https://www-fr.ccc.cea.fr/](https://www-fr.ccc.cea.fr/) (requires login/password to access it).
 
 #### CCC commands
 
