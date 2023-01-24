@@ -41,7 +41,8 @@ The TGCC is using [pcocc](https://github.com/cea-hpc/pcocc).
 
 Pcocc can import from docker exports. Thus we have con convert singularity -> docker -> `.tar` export -> pcocc image:
 
-Thus docker should be installed on the system which performs conversion
+Thus docker should be installed on the system which performs conversion.
+
 Casa-distro has a docker export function. We can run it from your development computer:
 
     casa_distro_admin convert_image source=brainvisa-5.0.4.sif
