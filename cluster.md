@@ -113,6 +113,10 @@ then submissions script must call (adapt -n to the number of CPUs to reserve):
 
     pcocc run -n 40 -c 1 -M openmpi-4.0.5 --mount /ccc/workflash/cont003/n4h00003/gaston/hcp_reco_cnn/start_scripts:/casa/start_scripts -I brainvisa-5.0.4 python -m soma_workflow.MPI_workflow_runner irene_MPI --workflow /ccc/workflash/cont003/n4h00003/gaston/large_pipeline.workflow
 
+Then run the submission procedure using this script:
+
+    ccc_mprun <script.sh>
+    
 In the example here, we run the command `python -m soma_workflow.MPI_workflow_runner` inside the container, in MPI mode (as many instances of the program will be run as requested tasks specified with the `-n` option)
 This command will run a [soma-workflow](https://populse.github.io/soma-workflow) workflow file in the job, using the MPI scheduler mode, using the configured resource `irene_MPI`.
 
@@ -232,4 +236,7 @@ You an either use a visualization node to run `soma_workflow_gui` (not tried yet
     [] wc.workflow_elements_status(5)
     ... -> lists jobs and statuses
 
+### More complete doc about PCOCC
+
+[https://www-fr.ccc.cea.fr/docs/irene/en/html/toc/fulldoc/Virtualization.html#pcocc](https://www-fr.ccc.cea.fr/docs/irene/en/html/toc/fulldoc/Virtualization.html#pcocc)
 
