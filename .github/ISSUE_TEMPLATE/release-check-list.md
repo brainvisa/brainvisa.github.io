@@ -71,15 +71,11 @@ assignees: ''
   - [ ] ~Install the `ova` on a non-Linux machine and verify that it works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)~
 
 
-- [ ] Build pip packages for the python projects which are distributed in pip:
-  - [ ] soma-workflow 
-         `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/soma/soma-workflow/x.y`
-  - [ ] soma-base
-         `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/soma/soma-base/x.y`
-  - [ ] populse_db
-         `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/populse/populse_db/x.y`
-  - [ ] capsul
-         `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/capsul/x.y`
+- [ ] Build pip packages for the python projects soma-workflow, soma-base, populse_db and capsul which are distributed in pip:
+  - [ ] `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/soma/soma-workflow/x.y`
+  - [ ] `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/soma/soma-base/x.y`
+  - [ ] `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/populse/populse_db/x.y`
+  - [ ] `./brainvisa-x.y-x.i/bin/bv python3 -m build /casa/host/src/capsul/x.y`
 
 - [ ] Publish them to `test.pypi.org`
   - [ ] `./brainvisa-x.y-x.i/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/soma/soma-workflow/x.y/dist/*`
@@ -89,10 +85,10 @@ assignees: ''
 
 - [ ] Create a virtualenv test environment and test packages install:
   - [ ] `mkdir -p /tmp/brainvisa-x.y.z/testenv && python3 -m venv /tmp/brainvisa-x.y.z/testenv`
-  - [ ] /tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-workflow
-  - [ ] /tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-base
-  - [ ] /tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ populse-db
-  - [ ] /tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ capsul
+  - [ ] `/tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
+  - [ ] `/tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-base`
+  - [ ] `/tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ populse-db`
+  - [ ] `/tmp/brainvisa-x.y.z/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ capsul`
 
 - [ ] Publish them to `pypi.org`
   - [ ] `./brainvisa-x.y-x.i/bin/bv python3 -m twine upload /casa/host/src/soma/soma-workflow/x.y/dist/*`
