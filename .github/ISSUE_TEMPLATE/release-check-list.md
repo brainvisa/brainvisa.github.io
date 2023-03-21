@@ -64,7 +64,7 @@ assignees: ''
   - [ ] Create a new directory `/i2bm/brainvisa/brainvisa-cea-x.y.z` and install the Singularity release in there (`singularity run --bind ...`)
   - [ ] Remove the home directory to enable per-user home: `rm -r /i2bm/brainvisa/brainvisa-cea-x.y.z/home/`
   - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
-  - [ ] Make it the default version: `ln -sfT brainvisa-cea-x.y.z/ /i2bm/brainvisa/brainvisa`
+  - [ ] Make it the default version: `ln -sfT brainvisa-cea-x.y.z/ /i2bm/brainvisa/brainvisa` and `ln -sfT brainvisa-cea-x.y.z/ /i2bm/brainvisa/brainvisa-x.y`
   - [ ] ~Copy `brainvisa-cea-*.ova` and the associated `.json` into `/i2bm/brainvisa` and set their permissions (`chmod 444`)~
   - [ ] ~Install the `ova` on a non-Linux machine and verify that it works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)~
 
