@@ -18,7 +18,7 @@ assignees: ''
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
-- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen) (https://github.com/brainvisa/brainvisa.github.io/issues/54)
+- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
   - [ ] https://github.com/brainvisa/aims-free/blob/x.y/aimsdata/doc/html/en/changelog.html
   - [ ] https://github.com/brainvisa/axon/blob/x.y/doc/en/help/changelog.html
   - [ ] https://github.com/brainvisa/anatomist-free/blob/x.y/doc/html/en/changelog.html
@@ -51,7 +51,7 @@ assignees: ''
   - ~`ova` image for the `cea` distro~ we will only do these images if users request them
     - [ ] ~Create the image with `./cea-x.y-x.i/bin/casa_distro_admin create_user_image name=brainvisa-cea version=x.y.z base_directory=/volatile/a-sac-ns-brainvisa/bbi_nightly install=no container_type=vbox base_image=casa-run-x.i.ova environment_name=cea-x.y-x.i` (beware to name the image `brainvisa-cea-` and not just `cea-`)~
 
-- [ ] Create tags with `bv_tag_release.py`
+- [ ] Create tags with `bv_tag_release`
 
 - [ ] Edit the website to announce the new release
   - [ ] web project sources
