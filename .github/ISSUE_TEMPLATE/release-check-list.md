@@ -39,7 +39,7 @@ assignees: ''
 	      `casa_distro_admin publish_user_image image=brainvisa-x.y.z.sif`
 
   - `ova` image for the `brainvisa` distro
-    - [ ] Create the image with `./brainvisa-x.y-x.i/bin/casa_distro_admin create_user_image version=x.y.z base_directory=/volatile/a-sac-ns-brainvisa/bbi-brainvisa-x.y install=no container_type=vbox base_image=casa-run-x.i.ova environment_name=brainvisa-x.y-x.i`
+    - [ ] Create the image with `./brainvisa-x.y-x.i/bin/casa_distro_admin create_user_image version=x.y.z install=no container_type=vbox base_image=casa-run-x.i.ova environment_name=brainvisa-x.y-x.i`
     - [ ] Verify that the image works
       - [ ] Install the image
       - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
