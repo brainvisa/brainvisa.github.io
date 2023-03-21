@@ -30,7 +30,7 @@ assignees: ''
 
 - [ ] Create, test, and publish/deploy the images
   - `sif` image for the `brainvisa` distro
-    - [ ] Create the image with `./brainvisa-x.y-x.i/bin/casa_distro_admin create_user_image version=x.y.z container_type=singularity distro=brainvisa image_version=x.i branch=x.j install_thirdparty=file:///neurospin/brainvisa/thirdparty/thirdparty.json`
+    - [ ] Create the image with `./brainvisa-x.y-x.i/bin/casa_distro_admin create_user_image version=x.y.z container_type=singularity distro=brainvisa image_version=x.i branch=x.y install_thirdparty=file:///neurospin/brainvisa/thirdparty/thirdparty.json`
     - [ ] Verify that the image works
       - [ ] Install the image
 	        `mkdir -p /tmp/test-brainvisa-x.y.z;singularity run --no-home --bind /tmp/test-brainvisa-x.y.z:/casa/setup /volatile/a-sac-ns-brainvisa/bbi_nightly/brainvisa-x.y.z.sif`
