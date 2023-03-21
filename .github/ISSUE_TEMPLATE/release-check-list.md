@@ -13,7 +13,7 @@ assignees: ''
   - [ ] Replace tag release version x.y and x.y.z with the new release version (as an example: 5.1 / 5.1.2)
   - [ ] Replace base image version x.i with the new base image version (as an example: 5.3)
 
-- [ ] Check that all projects have the correct version in their sources: `bv_tag_release.py --fix-source-version-numbers`
+- [ ] Check that all projects have the correct version in their sources: `bv_tag_release --fix-source-version-numbers`
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
