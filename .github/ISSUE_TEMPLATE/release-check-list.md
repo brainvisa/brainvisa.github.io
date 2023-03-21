@@ -63,8 +63,6 @@ assignees: ''
   - [ ] Copy `brainvisa-cea-*.sif` and the associated `.json` into `/i2bm/brainvisa` and set their permissions (`chmod 444`)
   - [ ] Create a new directory `/i2bm/brainvisa/brainvisa-cea-x.y.z` and install the Singularity release in there (`singularity run --bind ...`)
   - [ ] Remove the home directory to enable per-user home: `rm -r /i2bm/brainvisa/brainvisa-cea-x.y.z/home/`
-  - [ ] Edit `/i2bm/brainvisa/brainvisa-cea-x.y.z/conf/casa_distro.json` and add `"container_failure_message": "Singularity could not start. BrainVISA needs singularity version %(singularity_version)s or later. You can install it (as admin) by typing in a terminal:\n. /etc/os-release && sudo dpkg -i /i2bm/brainvisa/singularity-latest-${ID}-${VERSION_ID}_$(dpkg --print-architecture).deb"`
-    - [ ] By the way, check that the `/i2bm/brainvisa/singularity-latest*` symlinks are working and up-to-date
   - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
   - [ ] Make it the default version: `ln -sfT brainvisa-cea-x.y.z/ /i2bm/brainvisa/brainvisa`
   - [ ] ~Copy `brainvisa-cea-*.ova` and the associated `.json` into `/i2bm/brainvisa` and set their permissions (`chmod 444`)~
