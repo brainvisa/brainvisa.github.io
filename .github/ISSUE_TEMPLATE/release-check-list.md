@@ -14,6 +14,7 @@ assignees: ''
   - [ ] Replace base image version x.i with the new base image version (as an example: 5.3)
 
 - [ ] Check that all projects have the correct version in their sources: `bv_tag_release --fix-source-version-numbers`
+- [ ] If needed, fix project versions in their sources: `GIT_AUTHOR_NAME='<author_name>' GIT_COMMITTER_NAME='<committer_name>' GIT_AUTHOR_EMAIL='<author_email>' GIT_COMMITTER_EMAIL='<committer_email>' bv_tag_release --fix-source-version-numbers --really-do-it`
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
