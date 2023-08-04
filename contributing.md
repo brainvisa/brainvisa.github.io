@@ -28,7 +28,7 @@ This can be done either using [casa-distro](http://brainvisa.info/casa-distro/in
     * create a [developer environment](https://brainvisa.github.io/casa-distro/concepts.html#environment), for instance:
           
           casa_distro setup_dev distro=opensource system=ubuntu-18.04 branch=master
-  * edit approopriate configs in ``<env_dir>/conf``(especially ``svn.secret`` and ``bv_maker.cfg``) if needed
+  * edit appropriate configs in ``<env_dir>/conf``(especially ``svn.secret`` and ``bv_maker.cfg``) if needed
   * set the `bin` subdirectory of the *environment* directory in your `PATH` environment variable (can be done in a `.bash_profile` or `.bashrc` init file)
   * build using ``bv_maker``
   
@@ -69,7 +69,7 @@ When starting to develop into a project managed by ``git``, there are two possib
 | user has push access to `origin/<feature>` | push to [feature branch](#feature_branch) [with](#forking) or [without fork](#origin_branch) | [feature branch](#feature_branch) [with](#forking) or [without fork](#origin_branch) |
 | no push access       | [feature branch with fork](#forking) | [feature branch with fork](#forking) |
 
-Basically we handle multiple projects the same way as working in a single project, we just need to perform commit / push / pull request operations multiple times. But we just needed tools to help automatize at least update operations in multiple projects.
+Basically we handle multiple projects the same way as working in a single project, we just need to perform commit / push / pull request operations multiple times. But we just needed tools to help automate at least update operations in multiple projects.
 
 <a name="bv_maker_sources">
 
@@ -277,7 +277,7 @@ Howto / common situations
     git commit
     [ git push ]
 
-### same but I have also commited locally, on the wrong branch
+### same but I have also committed locally, on the wrong branch
 
 * if only one commit has been done: use cherry-pick
 
@@ -323,7 +323,7 @@ Note that, when developing in [Casa-Distro containers](https://brainvisa.github.
 Releasing toolboxes
 -------------------
 
-Starting from BrainVisa 5.0, users will install the BrainVisa distribution as virtual machine or container images. The older installer is gone, so is the modularity (nobody was actually using the modular struture which was very difficult to maintain, and no toolbox developer have actually used it to distribute their toolbox).
+Starting from BrainVisa 5.0, users will install the BrainVisa distribution as virtual machine or container images. The older installer is gone, so is the modularity (nobody was actually using the modular structure which was very difficult to maintain, and no toolbox developer have actually used it to distribute their toolbox).
 
 ### Installing a toolbox in BrainVisa
 
@@ -345,7 +345,7 @@ The developer has to copy the built files into an install directory, and zip its
     cd /casa/host/install
     zip -r ../toolbox-5.0.0-ubuntu-18.04.zip *
     
-(here in this example, we want to release the toolbox for the version `5.0.0` of BrainVisa, and we are buiding in a container based on an Ubuntu 18.04 system).
+(here in this example, we want to release the toolbox for the version `5.0.0` of BrainVisa, and we are building in a container based on an Ubuntu 18.04 system).
 
 Then publish the ZIP file, and users just need to download it and unzip it into their read/write install directory, which is `/casa/host/install/` in singularity distributions, and can be `/casa/install` in VirtualBox distributions. As said before, installig can also be handled by the `bv` GUI install options, if the toolbox can be downloaded in the expected directories tree in a web server.
 
