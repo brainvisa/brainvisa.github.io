@@ -10,7 +10,7 @@ To be able to release a group of dependent projects, we need to be sure they all
   * "cea" which is the whole set of projects (internal distributions)
   * "brainvisa" is the projects set which are publicly distributed in binary packages
   * "cati" which is the CATI infrastructure projects (includes catidb, not anatomist etc)
-* release: set of fixed versons for a projects, which are either officially released as sources or via pypi etc, or / and in a binary package of a given distribution.
+* release: set of fixed versions for a projects, which are either officially released as sources or via pypi etc, or / and in a binary package of a given distribution.
 * for instance "brainvisa" and "cati" distributions may not feature the same versions of some projetcs
 
 ## Release pipeline

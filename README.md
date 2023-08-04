@@ -5,7 +5,7 @@ and developers information.
 
 ## Users
 
-Users sould normally look first at the [BrainVISA web site](http://brainvisa.info).
+Users should normally look first at the [BrainVISA web site](http://brainvisa.info).
 
 Questions can be searched for or posted in the [discussions section](https://github.com/brainvisa/brainvisa.github.io/discussions). This is now the place to get support (it will replace the former [brainvisa forum](http://brainvisa.info/forum)).
 
