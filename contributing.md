@@ -10,13 +10,13 @@ General workflow
 
 Many components of BrainVISA now have their source managed with Git, and are hosted on Github. If you are new to Git, you should read the short [GitHub Git handbook](https://guides.github.com/introduction/git-handbook/). You can find more information in the [Git and GitHub learning resources](https://help.github.com/articles/git-and-github-learning-resources/).
 
-BrainVISA projects are managed by [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html), a tool to manage the whole development process, including sources management, configuration and build, tests, and more. The main tool of `brainvisa-cmake` is [bv_maker](http://brainvisa.info/brainvisa-cmake/bv_maker.html).
+BrainVISA projects are managed by [brainvisa-cmake](https://brainvisa.info/brainvisa-cmake/index.html), a tool to manage the whole development process, including sources management, configuration and build, tests, and more. The main tool of `brainvisa-cmake` is [bv_maker](https://brainvisa.info/brainvisa-cmake/bv_maker.html).
 
 For sources management, `bv_maker` relies on standard source versioning control software, namely `subversion` or `git`. It mainly adds a multi-project management layer.
 
 ### Setup a build environment
 
-This can be done either using [casa-distro](http://brainvisa.info/casa-distro/index.html) which provides build environments in virtual containers, or on a host system, after installing all needed development libraries (list not provided here...), using [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html).
+This can be done either using [casa-distro](https://brainvisa.info/casa-distro/index.html) which provides build environments in virtual containers, or on a host system, after installing all needed development libraries (list not provided here...), using [brainvisa-cmake](https://brainvisa.info/brainvisa-cmake/index.html).
 
 * with casa-distro (simpler, recommended)
   * install [Singularity 3](https://sylabs.io/singularity/). Some Linux packages are available on [BrainVisa download page](https://new.brainvisa.info/download.html#using-singularity)
@@ -24,7 +24,7 @@ This can be done either using [casa-distro](http://brainvisa.info/casa-distro/in
     * get a [developer image of BrainVisa/Casa-Distro](https://new.brainvisa.info/download.html#developers) (images named "casa-dev-\<system\>.sif" for Singularity)
     * follow the instructions on this page to setup a developer *environment* from the image
   * Alternative 2:
-    * get [casa-distro](http://brainvisa.info/casa-distro/index.html)
+    * get [casa-distro](https://brainvisa.info/casa-distro/index.html)
     * create a [developer environment](https://brainvisa.github.io/casa-distro/concepts.html#environment), for instance:
           
           casa_distro setup_dev distro=opensource system=ubuntu-18.04 branch=master
@@ -35,8 +35,8 @@ This can be done either using [casa-distro](http://brainvisa.info/casa-distro/in
   Some help about configuration is available on the [BrainVisa website](https://new.brainvisa.info/download.htmlconfiguration.html)
 
 * on host system (more difficult)
-  * Get [brainvisa-cmake](http://brainvisa.info/brainvisa-cmake/index.html)
-  * [configure sources](http://brainvisa.info/brainvisa-cmake/compile_existing.html#edit-bv-maker-configuration-file)
+  * Get [brainvisa-cmake](https://brainvisa.info/brainvisa-cmake/index.html)
+  * [configure sources](https://brainvisa.info/brainvisa-cmake/compile_existing.html#edit-bv-maker-configuration-file)
   * install all needed thirdparty libraries dependencies (may be fastidious)
   * build using ``bv_maker``
 
