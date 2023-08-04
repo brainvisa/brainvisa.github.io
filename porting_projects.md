@@ -59,13 +59,13 @@ Qt4 / Qt5
 
 ### imports:
 
-Don't import directly PyQt5 or PyQt4. We have a compatibility module: [soma.qt_gui.qt_backend](http://brainvisa.info/soma-base/sphinx/api.html#module-soma.qt_gui.qt_backend) which replaces the explicit imports:
+Don't import directly PyQt5 or PyQt4. We have a compatibility module: [soma.qt_gui.qt_backend](https://brainvisa.info/soma-base/sphinx/api.html#module-soma.qt_gui.qt_backend) which replaces the explicit imports:
 
         from soma.qt_gui.qt_backend import Qt
         widget = Qt.QWidget()
         # etc.
 
-The `qt_backend` module supports PyQt4, PyQt5 and PySide transparently, and offers a few functions to help links with [matplotlib](https://matplotlib.org/) (see [init_matplotlib_backend](http://brainvisa.info/soma-base/sphinx/api.html#soma.qt_gui.qt_backend.init_matplotlib_backend)) or for the few functions which do not have the same API in the different implementations (like [QFileDialog.getOpenFileName](http://brainvisa.info/soma-base/sphinx/api.html#soma.qt_gui.qt_backend.getOpenFileName)).
+The `qt_backend` module supports PyQt4, PyQt5 and PySide transparently, and offers a few functions to help links with [matplotlib](https://matplotlib.org/) (see [init_matplotlib_backend](https://brainvisa.info/soma-base/sphinx/api.html#soma.qt_gui.qt_backend.init_matplotlib_backend)) or for the few functions which do not have the same API in the different implementations (like [QFileDialog.getOpenFileName](https://brainvisa.info/soma-base/sphinx/api.html#soma.qt_gui.qt_backend.getOpenFileName)).
 If you need to explicitly initialize the backend to a specific Qt implementation, do it **only** in main scripts directly called from the user, not in modules/libraries which may be imported.
 
         from soma.qt_gui import qt_backend
