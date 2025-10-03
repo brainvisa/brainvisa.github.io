@@ -8,65 +8,36 @@ title: BrainVISA developers' website
 
 **BrainVISA** is a neuroimaging software platform for mass data analysis
 
-**All the information for users of BrainVISA is on [brainvisa.info](https://brainvisa.info/).** This website is meant for developers. It focuses on developers aspects: installing, building, development documentations and APIs.
+**All the information for users of BrainVISA is on [brainvisa.info](https://brainvisa.info/).** This website (dev.brainvisa.info) is meant for developers. It focuses on building BrainVISA from source, programming APIs, and packaging.
 
-BrainVISA contains a set of projects, each project may be divided into several components. About 50 components are currently part of the BrainVISA environment.
+BrainVISA consists of an ecosystem of software projects, each of which may be divided into several components. These projects are interdependent and require coordinated releases: therefore, we strongly recommend following the guidelines below for setting up a development environment.
 
-### casa-distro:
-  
-Development, distribution infrastructure in a containerized environment (using Singularity or VirtualBox). Used to install BrainVisa, or install a developer environment, as explained in [BrainVisa download page](https://brainvisa.info/web/download.html).
-
-* [Stable doc](https://brainvisa.info/casa-distro/index.html)
-* [Devel (master) doc](https://brainvisa.github.io/casa-distro/)
-
-* [brainvisa-cmake](https://brainvisa.info/brainvisa-cmake/index.html): compilation, testing etc.
-
-### Aims:
-
-Neuroimaging data manipulation, image processing (C++ and Python)
-
-* [AIMS](https://brainvisa.info/aimsdata/user_doc/index.html)
-
-### Anatomist
-
-Interactive 3D neuroimaging data visualization
-
-* [Anatomist](https://brainvisa.info/web/anatomist.html)
-
-### Capsul / Soma-Workflow
-
-Pipelining and distributed calculation (Python)
-
-* [capsul](https://brainvisa.info/capsul/index.html): pipelining
-* [soma-workflow](https://brainvisa.info/web/soma-workflow/index.html)
-
-### Morphologist
-
-Brain segmentation, cortical sulci analysis and morphometry. This is the primary applicative toolbox of BrainVisa.
-
-* [Morphologist](https://brainvisa.info/web/morphologist.html)
-
-### Axon
-
-The older pipelining infrastructure and GUI, now obsolete, but still widely used...
-
-* [Axon](https://brainvisa.info/axon/user_doc/index.html)
+<!-- TODO: add info on
+- installing a nightly build
+- branches (main/master vs stable)
+- lack of dev conda packages for now
+-->
 
 
-## Contributor's guide
+## Setting up a development environment
 
-[Developing in BrainVISA environment](developing.md)
+> [!IMPORTANT]
+> BrainVISA is transitioning from a monolithic container-based distribution (BrainVISA 5) to a modular Conda/pixi-based distribution (BrainVISA 6).
 
-[Contributor's guide](contributing.md)
+* [Development environment for BrainVISA 6 (in progress)](devenv_pixi.md)
+* [Development environment for BrainVISA 5](devenv_casa-distro.md)
 
-[Release policy](release_policy.md)
 
-## Tutorials
+## Programming in BrainVISA
+
+### Tutorials
+
+<!-- TODO links -->
 
 * pyaims
 * pyanatomist
 
-## API
+### Programming APIs
 
 * [casa-distro](https://brainvisa.info/casa-distro/)
   * [Sources repository](https://github.com/brainvisa/casa-distro)
@@ -108,6 +79,15 @@ The older pipelining infrastructure and GUI, now obsolete, but still widely used
   * [API doc](https://brainvisa.info/axon/dev_doc/)
   * [Sources repository](https://github.com/brainvisa/axon)
   * [Programming doc](https://brainvisa.info/axon/Programming_with_brainvisa.pdf)
+
+
+<!-- TODO add a HOWTO for developing a toolbox and packaging it? -->
+
+## Making BrainVISA releases
+
+* [Packaging for Conda/pixi](packaging.md)
+
+* [Release policy](release_policy.md)
 
 
 ## Support
