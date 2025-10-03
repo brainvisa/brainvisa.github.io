@@ -30,7 +30,7 @@ casa_distro_admin create_base_image type=pixi image_version=5.4 base=ubuntu-24.0
 casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=6.0 distro=brainvisa install=0
 ```
 
-* Option 2: monolothic self-contained container:
+* Option 2: monolithic self-contained container:
 
 ```
 casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=6.0 distro=brainvisa
@@ -47,4 +47,46 @@ casa_distro_admin create_user_image container_type=apptainer_pixi image_version=
 ```
 mkdir brainvisa-6.0
 apptainer run -c -B $HOME -B brainvisa-6.0:/casa/setup brainvisa-6.0.sif
+```
+
+### Creating a self-contained container from the modular one
+
+* install a lightweight image, run its setup
+
+* install whatever packages you need in the installed casa-distro environment in /casa/host/install
+
+* if needeed, update the binary links by running the command:
+
+```
+bv_update_bin_links
+```
+
+* exit the container
+
+* `cd` into the environment directory
+
+* save the following recipe file in the current environment dir. Let's call it here `brainvisa-monolithic.recipe`:
+
+```
+Bootstrap: localimage
+
+From: ../brainvisa-6.0.sif
+
+%post
+cd /casa/install
+pixi add brainvisa=6.0
+pixi run bv_update_bin_links
+```
+
+* build the container image from this directory. The current dir is important as files will be copied from the local installation into the image from the relative current directory.
+
+```
+apptainer build build ../brainvisa_monolithic-6.0.sif ../rainvisa-monolithic.recipe
+```
+
+* OK you can try installing an environment from it:
+
+```
+mkdir brainvisa-monomithic-6.0
+apptainer run -c -B brainvisa-monlithic-6.0:/casa/setup brainvisa-monolithic-6.0.sif
 ```
