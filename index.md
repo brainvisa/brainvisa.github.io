@@ -32,7 +32,7 @@ BrainVISA consists of an ecosystem of software projects, each of which may be di
 
 ### Tutorials
 
-* [pyaims](https://brainvisa.info/pyaims/sphinx/pyaims_tutorial_nb.html]
+* [pyaims](https://brainvisa.info/pyaims/sphinx/pyaims_tutorial_nb.html)
 * [pyanatomist](https://brainvisa.info/pyanatomist/sphinx/pyanatomist_tutorial.html)
 
 ### Programming APIs
