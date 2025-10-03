@@ -8,7 +8,7 @@ title: BrainVISA developers' website
 
 **BrainVISA** is a neuroimaging software platform for mass data analysis
 
-**All the information for users of BrainVISA is on [brainvisa.info](https://brainvisa.info/).** This website is meant for developers. It focuses on developers aspects: installing, building, developmlent documentations and APIs.
+**All the information for users of BrainVISA is on [brainvisa.info](https://brainvisa.info/).** This website is meant for developers. It focuses on developers aspects: installing, building, development documentations and APIs.
 
 BrainVISA contains a set of projects, each project may be divided into several components. About 50 components are currently part of the BrainVISA environment.
 

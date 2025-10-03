@@ -2,7 +2,7 @@
 title: BrainVISA contributor's guide
 ---
 
-Developing and contribnuting to BrainVisa projects using git
+Developing and contributing to BrainVisa projects using git
 
 
 General workflow
