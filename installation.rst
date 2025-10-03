@@ -16,7 +16,7 @@ There are 2 alternatives: one is simpler but will not use Cuda in deep-learning 
 Simplest without cuda:
 ----------------------
 
-..code-block:: bash
+.. code-block:: bash
 
     # Create a workspace directory
     mkdir ~/workspace
@@ -38,7 +38,7 @@ Simplest without cuda:
 With Cuda
 ---------
 
-..code-block:: bash
+.. code-block:: bash
 
     # Create a workspace directory
     mkdir ~/workspace
@@ -73,3 +73,40 @@ It will create (if it doesn't exist yet) in the environment dir, a `bin/` subdir
 This is completely similar to what was provided with Casa-Distro installations in BrainVisa 5. Indeed the script is also called `bv` because it has the same role and functionalities, even if it is completely different internally.
 
 You may call the `bv_update_bin_links` script later to update the links to commandlines if you install new packages.
+
+
+Installing in a containerized environment
+=========================================
+
+In some cases a container installation is useful, either because the conda install will not run on a specific system (this should be rare), or because a particular facility requires to install software as containers (in a cluster or cloud for instance).
+
+Casa-Distro is not dead... We also provide a Casa-distro containerized installation with Pixi inside.
+
+Here again we have 2 alternatives:
+
+Container with only pixi
+------------------------
+
+This container allows to installs modular packages on the local filesystem:
+
+.. code-block:: bash
+
+    curl https://brainvisa.info/download/brainvisa-6.0.sif
+    mkdir brainvisa-6.0
+    apptainer run -c -B brainvisa-6.0:/casa/setup brainvisa-6.0.sif
+    ./brainvisa-6.0/bin/bv bash
+    % cd /casa/host/install
+    % pixi add morhologist
+
+The container provides a pixi environment already setup (in /casa/host/install), with BrainVisa, Cuda and Pytorch channels configured.
+
+Monolithic self-contained container
+-----------------------------------
+
+These containers are basically the same, but embed the full brainvisa installation in the `.sif` file, thus are self-contained and can be installed for instance on a cluster with no internet network access.
+
+In order to reduce the maintenance burden on our (very small) team, we do not provide and support those containers, but they are very easy to build.
+
+See https://dev.brainvisa.info/pixi_in_container.html, Creating a self-contained container from the modular one
+
+
