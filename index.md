@@ -60,7 +60,9 @@ BrainVISA consists of an ecosystem of software projects, each of which may be di
 
 ## Making BrainVISA releases
 
-* [Packaging for Conda/pixi](packaging.md)
+* [Packaging for Conda/pixi](pixi_packaging.md)
+
+* [Installing with Conda/pixi in a container](pixi_in_container.md)
 
 * [Release policy](release_policy.md)
 
