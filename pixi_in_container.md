@@ -1,9 +1,16 @@
+---
+title: Packaging for conda in a container
+---
 
-# Publishing documentation
+# {{page.title}}
 
-How to build BrainVisa packages and publish them for end users
+How to build BrainVisa packages and publish them for end users in a container
 
 ## Creating an Apptainer/Singularity container with a pixi installation inside
+
+A developer environment is **needed** for this containerization: it is barely used but relies on the infrastructure of Casa-distro and Brainvisa-cmake. Packages are actually the ones already published thus this is clearly overkill, we could simplify this in the future.
+
+* Install a developer environment, as described in https://github.com/brainvisa/soma-env
 
 * Install apptainer
 
@@ -36,7 +43,7 @@ casa_distro_admin create_user_image container_type=apptainer_pixi image_version=
 casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=6.0 distro=brainvisa
 ```
 
-### Installing an apptainer/pixi environment (user side):
+## Installing an apptainer/pixi environment (user side):
 
 (note: this doc section should end up in a user installation doc)
 
@@ -49,7 +56,7 @@ mkdir brainvisa-6.0
 apptainer run -c -B $HOME -B brainvisa-6.0:/casa/setup brainvisa-6.0.sif
 ```
 
-### Creating a self-contained container from the modular one
+## Creating a self-contained container from the modular one
 
 * download a lightweight image (you don't need to run its setup)
 
