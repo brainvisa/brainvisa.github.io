@@ -8,17 +8,28 @@ How to build BrainVisa packages and publish them for end users in a container
 
 ## Creating an Apptainer/Singularity container with a pixi installation inside
 
-A developer environment is **needed** for this containerization: it is barely used but relies on the infrastructure of Casa-distro and Brainvisa-cmake. Packages are actually the ones already published thus this is clearly overkill, we could simplify this in the future.
-
-* Install a developer environment, as described in https://github.com/brainvisa/soma-env
-
 * Install apptainer
 
-Make sure that the apptainer distribution works with the "fakeroot" features
+On Debian/Ubuntu systems for instance:
+
+```
+sudo apt install apptainer apptainer-suid
+```
+
+Make sure that the apptainer distribution works with the "fakeroot" features:
+
+```
+sudo apptainer config fakeroot --add $USER
+```
 
 * Install casa-dstro
 
-* pull an Unbintu-24.04 image for apptainer:
+```
+git clone https://github.com/brainvisa/casa-distro
+export PATH=$(pwd)/casa-distro/bin:"$PATH"
+```
+
+* pull a "casa-pixi" apptainer image from the BrainVISA server:
 
 ```
 apptainer pull ubuntu-24.04.sif docker://ubuntu:24.04
@@ -28,7 +39,7 @@ apptainer pull ubuntu-24.04.sif docker://ubuntu:24.04
 
 ```
 export CASA_BASE_DIRECTORY=$(pwd)
-casa_distro_admin create_base_image type=pixi image_version=5.4 base=ubuntu-24.04.sif
+casa_distro pull_image image=casa-pixi-5.4.sif
 ```
 
 * Option 1: lightweight modular container: the brainvisa installation will be done at setup time by the user:
@@ -84,4 +95,29 @@ apptainer build brainvisa_monolithic-6.0.sif brainvisa-monolithic.recipe
 ```
 mkdir brainvisa-monomithic-6.0
 apptainer run -c -B brainvisa-monlithic-6.0:/casa/setup brainvisa-monolithic-6.0.sif
+```
+
+## Rebuilding the base casa-pixi image
+
+Users should not need to do that, this doc is mainly for casa-distro developers (us), unless you need to ship additional packages in the image.
+
+* Install casa-dstro
+
+* pull an Unbintu-24.04 image for apptainer:
+
+```
+apptainer pull ubuntu-24.04.sif docker://ubuntu:24.04
+```
+
+* Create a casa-distro "base image" for pixi:
+
+```
+export CASA_BASE_DIRECTORY=$(pwd)
+casa_distro_admin create_base_image type=pixi image_version=5.4 base=ubuntu-24.04.sif
+```
+
+* Optionally, if you have the acces authorization to the server, publish the image:
+
+```
+casa_distro_admin publish_base_image type=casa-pixi image=casa-pixi-5.4.sif
 ```
