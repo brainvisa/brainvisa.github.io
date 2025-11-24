@@ -32,12 +32,6 @@ export PATH=$(pwd)/casa-distro/bin:"$PATH"
 * pull a "casa-pixi" apptainer image from the BrainVISA server:
 
 ```
-apptainer pull ubuntu-24.04.sif docker://ubuntu:24.04
-```
-
-* Create a casa-distro "base image" for pixi:
-
-```
 export CASA_BASE_DIRECTORY=$(pwd)
 casa_distro pull_image image=casa-pixi-5.4.sif
 ```
@@ -54,17 +48,26 @@ casa_distro_admin create_user_image container_type=apptainer_pixi image_version=
 casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=6.0 distro=brainvisa
 ```
 
+(note that the only difference is the `install` option)
+
+
 ## Installing an apptainer/pixi environment (user side):
 
 (note: this doc section should end up in a user installation doc)
 
 * download the `.sif` image (let's call it `brainvisa-6.0.sif`
 
-* run the image setup, as in casa-distro. However, as pixi uses a cache directory, the cache directory has to be mounted in the image read-write. This amounts to mounting (using the `-B` option) either `$XDG_CACHE_HOME`, `$RATTLER_CACHE_DIR`, or `$HOME`.
+* run the image setup, as in casa-distro.
 
 ```
 mkdir brainvisa-6.0
-apptainer run -c -B $HOME -B brainvisa-6.0:/casa/setup brainvisa-6.0.sif
+apptainer run -c -B brainvisa-6.0:/casa/setup brainvisa-6.0.sif
+```
+
+* if the image is a lightweight one, then the actuall installation of brainvisa packages will take place at the first run of the container:
+
+```
+brainvisa-6.0/bin/bv bash
 ```
 
 ## Creating a self-contained container from the modular one
