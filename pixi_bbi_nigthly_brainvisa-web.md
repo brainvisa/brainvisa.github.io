@@ -15,15 +15,14 @@ When we want to setup BBI nightly, the following steps should be done:
 
 * create a soma-env-{{page.version}} environment (cf https://github.com/brainvisa/soma-env) to a new BBI directory on rosette
 ```
-	ssh a-sac-ns-brainvisa@rosette
-	cd {{page.bbi_directory}}
-	git clone -b {{page.version}} --single-branch https://github.com/brainvisa/soma-env {{page.bbi_name}}
-	cd {{page.bbi_name}}
-	pixi run soma-env update
+ssh a-sac-ns-brainvisa@rosette
+cd {{page.bbi_directory}}
+git clone -b {{page.version}} --single-branch https://github.com/brainvisa/soma-env {{page.bbi_name}}
+cd {{page.bbi_name}}
+pixi run soma-env update
 ```
 * update bv_maker configuration
 ```
-	# Update bv_maker.cfg
 cat > conf/bv_maker.cfg <<EOF
 [ source \$SOMA_ROOT/src ]
   soma-env
