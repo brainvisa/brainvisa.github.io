@@ -67,6 +67,10 @@ BrainVISA consists of an ecosystem of software projects, each of which may be di
 * [Release policy](release_policy.md)
 
 
+## Setup BrainVISA Build Infrastructure (BBI) environment
+
+* [BBI nightly setup for brainvisa-web](pixi_bbi_nigthly_brainvisa-web.md)
+
 ## Support
 
 [Support and questions](https://github.com/brainvisa/brainvisa.github.io/discussions)
