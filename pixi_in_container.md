@@ -22,7 +22,7 @@ Make sure that the apptainer distribution works with the "fakeroot" features:
 sudo apptainer config fakeroot --add $USER
 ```
 
-* Install casa-dstro
+* Install casa-distro
 
 ```
 git clone https://github.com/brainvisa/casa-distro
