@@ -4,7 +4,7 @@ title: Packaging for conda in a container
 
 # {{page.title}}
 
-How to build BrainVisa packages and publish them for end users in a container
+How to build BrainVISA packages and publish them for end users in a container
 
 ## Creating an Apptainer/Singularity container with a pixi installation inside
 
@@ -96,17 +96,17 @@ apptainer build brainvisa_monolithic-6.0.sif brainvisa-monolithic.recipe
 * OK you can try installing an environment from it:
 
 ```
-mkdir brainvisa-monomithic-6.0
-apptainer run -c -B brainvisa-monlithic-6.0:/casa/setup brainvisa-monolithic-6.0.sif
+mkdir brainvisa-monolithic-6.0
+apptainer run -c -B brainvisa-monolithic-6.0:/casa/setup brainvisa-monolithic-6.0.sif
 ```
 
 ## Rebuilding the base casa-pixi image
 
 Users should not need to do that, this doc is mainly for casa-distro developers (us), unless you need to ship additional packages in the image.
 
-* Install casa-dstro
+* Install casa-distro
 
-* pull an Unbintu-24.04 image for apptainer:
+* pull an Unbuntu-24.04 image for apptainer:
 
 ```
 apptainer pull ubuntu-24.04.sif docker://ubuntu:24.04
