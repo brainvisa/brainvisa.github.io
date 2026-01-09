@@ -96,29 +96,29 @@ EOF
   - [ ] Make it the default version: `ln -sfT brainvisa-x.y/ /drf/brainvisa/brainvisa`
 
 - [ ] Build pip packages for the python projects soma-workflow, soma-base, populse_db and capsul which are distributed in pip:
-  - [ ] `./soma-env-x.y/bin/bv python3 -m build ./soma-env-x.y/src/soma/soma-workflow/x.y`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m build ./soma-env-x.y/src/soma/soma-base/x.y`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m build ./soma-env-x.y/src/populse/populse_db/x.y`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m build ./soma-env-x.y/src/capsul/x.y`
+  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-workflow/x.y`
+  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-base/x.y`
+  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/populse/populse_db/x.y`
+  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/capsul/x.y`
 
 - [ ] Publish them to `test.pypi.org`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload --repository testpypi ./soma-env-x.y/src/soma/soma-workflow/x.y/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload --repository testpypi ./soma-env-x.y/src/soma/soma-base/x.y/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload --repository testpypi ./soma-env-x.y/src/populse/populse-db/x.y/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload --repository testpypi ./soma-env-x.y/src/capsul/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/soma/soma-workflow/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/soma/soma-base/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/populse/populse-db/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/capsul/x.y/dist/*`
 
 - [ ] Create a virtualenv test environment and test packages install:
-  - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python3 -m venv /tmp/brainvisa-x.y/testenv`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-base`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ populse-db`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ capsul`
+  - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python -m venv /tmp/brainvisa-x.y/testenv`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-base`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ populse-db`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ capsul`
 
 - [ ] Publish them to `pypi.org`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload ./soma-env-x.y/src/soma/soma-workflow/x.y/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload ./soma-env-x.y/src/soma/soma-base/x.y/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload ./soma-env-x.y/src/populse/populse-db/x.y/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python3 -m twine upload ./soma-env-x.y/capsul/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/soma/soma-workflow/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/soma/soma-base/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/populse/populse-db/x.y/dist/*`
+  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/capsul/x.y/dist/*`
 
 - [ ] [Open a new GitHub issue for known issues](https://github.com/brainvisa/brainvisa.github.io/issues/new?template=known-issues-of-a-brainvisa-release.md&title=Known+issues+for+BrainVISA+x.y)
 
