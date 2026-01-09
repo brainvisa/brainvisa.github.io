@@ -4,9 +4,10 @@ about: RESERVED for the @brainvisa/admin team to release BrainVISA projects
 title: BrainVISA x.y release check-list
 labels: ''
 assignees: ''
+version: 'x.y'
 ---
 
-# Release check-list
+# Release {{version}} check-list
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
