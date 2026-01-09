@@ -95,10 +95,10 @@ EOF
 		`brainvisa`
   - [ ] Make it the default version: `ln -sfT brainvisa-x.y/ /drf/brainvisa/brainvisa`
 
-- [ ] Build pip packages for the python projects soma-workflow, soma-base, populse_db and capsul which are distributed in pip:
+- [ ] Build pip packages for the python projects soma-workflow, soma-base, populse-db and capsul which are distributed in pip:
   - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-workflow`
   - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-base`
-  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/populse/populse_db`
+  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/populse/populse-db`
   - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/capsul`
 
 - [ ] Publish them to `test.pypi.org`
