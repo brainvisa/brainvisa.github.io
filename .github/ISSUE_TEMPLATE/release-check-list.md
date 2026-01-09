@@ -108,7 +108,7 @@ EOF
   - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/capsul/dist/*`
 
 - [ ] Create a virtualenv test environment and test packages install:
-  - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python -m venv /tmp/brainvisa-x.y/testenv`
+  - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python3 -m venv /tmp/brainvisa-x.y/testenv`
   - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
   - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-base`
   - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ populse-db`
