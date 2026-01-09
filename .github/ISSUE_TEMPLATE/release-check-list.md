@@ -1,7 +1,7 @@
 ---
 name: BrainVISA release check-list
 about: RESERVED for the @brainvisa/admin team to release BrainVISA projects
-title: BrainVISA release check-list [x.y]
+title: BrainVISA x.y release check-list
 labels: ''
 assignees: ''
 ---
@@ -11,9 +11,9 @@ assignees: ''
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
 - [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
-  - [ ] https://github.com/brainvisa/aims-free/blob/x.y/aimsdata/doc/html/en/changelog.html
-  - [ ] https://github.com/brainvisa/axon/blob/x.y/doc/en/help/changelog.html
-  - [ ] https://github.com/brainvisa/anatomist-free/blob/x.y/doc/html/en/changelog.html
+  - [ ] https://github.com/brainvisa/aims-free/blob/soma-env-x.y/aimsdata/doc/html/en/changelog.html
+  - [ ] https://github.com/brainvisa/axon/blob/soma-env-x.y/doc/en/help/changelog.html
+  - [ ] https://github.com/brainvisa/anatomist-free/blob/soma-env-x.y/doc/html/en/changelog.html
   - [ ] https://bioproj.extra.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.rst
 
 - [ ] Connect to rosette using
@@ -32,7 +32,7 @@ assignees: ''
   - [ ] Reindex packages on /drf/neuro-forge and publish packages to brainvisa.info
           `pixi run neuro-forge publish`
     
-- [ ] Create, test, and publish/deploy the images
+- [ ] Create, test, and publish/deploy the images (optional)
 	- `sif` monolothic brainvisa install
 		- [ ] Change directory
 		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro`
