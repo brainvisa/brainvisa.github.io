@@ -109,11 +109,10 @@ EOF
 
 - [ ] Create a virtualenv test environment and test packages install:
   - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python3 -m venv /tmp/brainvisa-x.y/testenv`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install setuptools numpy # Because setuptools and numpy are missing on https://test.pypi.org`
   - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-base`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ populse-db`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ capsul`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple soma-base`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple populse-db`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple capsul`
 
 - [ ] Publish them to `pypi.org`
   - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/soma/soma-workflow/dist/*`
