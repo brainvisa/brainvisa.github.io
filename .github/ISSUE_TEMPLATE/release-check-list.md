@@ -63,7 +63,8 @@ assignees: ''
   - [ ] Create a new directory `/drf/brainvisa/brainvisa-x.y` 
 		`mkdir -p /drf/brainvisa/brainvisa-x.y`
   - [ ] Setup pixi workspace
-		`cat > pixi.toml <<EOF
+```bash
+cat > pixi.toml <<EOF
 [workspace]
 authors = ["sapetnioc <sapetnioc@users.noreply.github.com>"]
 channels = ["https://brainvisa.info/neuro-forge", "conda-forge", "/drf/neuro-forge/brainvisa-cea"]
@@ -81,13 +82,14 @@ constellation = ">=x.y"
 primatologist = ">=x.y"
 morphologist-baby = ">=x.y"
 brainrat = ">=x.y"
-EOF`
+EOF
+```
   - [ ] Install environment
         `pixi install`
 		`pixi run brainvisa -b --setup`
 		`pixi run bv_update_links`
   - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
-        `pixi shell`
+        `/drf/brainvisa/brainvisa-x.y/bin/bv bash`
         `for __f in $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
         `anatomist $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.nii')`
 		`brainvisa`
