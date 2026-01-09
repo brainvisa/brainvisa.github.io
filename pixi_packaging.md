@@ -23,14 +23,6 @@ When we want to perform a release and publish conda packages of a distribution, 
 ```
 	pixi run bv_maker
 ```
-* build a version plan: create a version plan that determine which projects should be released in the distribution, which versions for them, and check if versions match source revisions (typically if the source code has changed since the previous release, then the version number must have changed also, or be changed before the release)
-```
-	pixi run soma-env version_plan
-```
-* apply version plan: update version in project files and commit in github projects
-```
-	pixi run soma-env apply_plan
-```
 * update sources and build software tree
 ```
 	pixi run bv_maker
