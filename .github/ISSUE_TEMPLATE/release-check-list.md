@@ -55,9 +55,9 @@ assignees: ''
 
 - [ ] Edit the website to announce the new release
   - [ ] web project sources
-  - [ ] log on the web server, rebuild the web site in the casa-distro installed there: `ssh web`, then in the server:
-    - [ ] `web_build/bin/bv bv_maker`
-    - [ ] publish the web site using the publish script: `./web-build/src/communication/web/x.y/scripts/bv_publish_web /var/www/html/brainvisa.info`
+  - [ ] log on rosette, rebuild the web site in the brainvisa-web build: `ssh a-sac-ns-brainvisa@rosette`, then in the server:
+    - [ ] `/home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/bin/bv_maker`
+    - [ ] publish the web site using the publish script: `/home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/bin/bv /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/src/communication/web/master/scripts/bv_publish_web brainvisa@brainvisa.info:/var/www/html/brainvisa.info`
 
 - [ ] Deploy the `cea` pixi release:
   - [ ] Create a new directory `/drf/brainvisa/brainvisa-x.y` 
