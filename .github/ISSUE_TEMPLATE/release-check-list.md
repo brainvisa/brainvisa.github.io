@@ -1,98 +1,124 @@
+---
+name: BrainVISA release check-list
+about: RESERVED for the @brainvisa/admin team to release BrainVISA projects
+title: BrainVISA release check-list [x.y]
+labels: ''
+assignees: ''
+---
+
 # Release check-list
 
-- [x] Check that all projects have the correct version in their sources: `bv_tag_release --fix-source-version-numbers`
-- [x] ~If needed, fix project versions in their sources: `GIT_AUTHOR_NAME='<author_name>' GIT_COMMITTER_NAME='<committer_name>' GIT_AUTHOR_EMAIL='<author_email>' GIT_COMMITTER_EMAIL='<committer_email>' bv_tag_release --fix-source-version-numbers --really-do-it`~
+- [ ] Check that tests are successful on https://brainvisa.info/builds/
 
-- [x] Check that tests are successful on https://brainvisa.info/builds/
-  - [x] Fix capsul tests (soma-workflow `sqlite3.OperationalError: no such table: db_version`)
+- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
+  - [ ] https://github.com/brainvisa/aims-free/blob/x.y/aimsdata/doc/html/en/changelog.html
+  - [ ] https://github.com/brainvisa/axon/blob/x.y/doc/en/help/changelog.html
+  - [ ] https://github.com/brainvisa/anatomist-free/blob/x.y/doc/html/en/changelog.html
+  - [ ] https://bioproj.extra.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.rst
 
-- [x] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
-  - [x] https://github.com/brainvisa/aims-free/blob/5.1/aimsdata/doc/html/en/changelog.html
-  - [x] https://github.com/brainvisa/axon/blob/5.1/doc/en/help/changelog.html
-  - [x] https://github.com/brainvisa/anatomist-free/blob/5.1/doc/html/en/changelog.html
-  - [x] https://bioproj.extra.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.rst
-
-- [x] Run a last build to update the changelogs 
-  - [x] `bv_maker sources doc` in the `brainvisa` distro
-  - [x] `bv_maker sources doc` in the `cea` distro
-
+- [ ] Connect to rosette using
+        `ssh a-sac-ns-brainvisa@rosette`
+- [ ] Create public and brainvisa-cea packages for conda
+  - [ ] Change directory
+          `cd /home_local/a-sac-ns-brainvisa/bbi-daily/soma-env-x.y`
+  - [ ] Update sources and build software tree
+          `pixi run bv_maker`
+  - [ ] Update release version and generate packaging plan
+          `pixi run soma-env packaging_plan --release`
+  - [ ] Apply packaging plan, build conda packages and publish to /drf/neuro-forge
+          `pixi run soma-env apply_plan`
+  - [ ] Change directory
+          `cd /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge`
+  - [ ] Reindex packages on /drf/neuro-forge and publish packages to brainvisa.info
+          `pixi run neuro-forge publish`
+    
 - [ ] Create, test, and publish/deploy the images
-  - `sif` image for the `brainvisa` distro
-    - [x] Create the image with:
-           `export CASA_BASE_DIRECTORY=/volatile/a-sac-ns-brainvisa/bbi-nightly`
-           `export TMPDIR=/volatile/tmp`
-           `./brainvisa-5.1-5.3/bin/casa_distro_admin create_user_image version=5.1.2 container_type=singularity distro=brainvisa image_version=5.3 branch=5.1 install_thirdparty=file:///neurospin/brainvisa/thirdparty/thirdparty.json`
-    - [x] Verify that the image works
-      - [x] Install the image
-	        `mkdir -p /tmp/test-brainvisa-5.1.2;apptainer run -ce --bind /tmp/test-brainvisa-5.1.2:/casa/setup /volatile/a-sac-ns-brainvisa/bbi-nightly/brainvisa-5.1.2.sif`
-      - [x] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
-    - [x] Publish the image on the BrainVISA web site
-	      `casa_distro_admin publish_user_image image=brainvisa-5.1.2.sif`
-
-  - `ova` image for the `brainvisa` distro
-    - [ ] Create the image with `./brainvisa-5.1-5.3/bin/casa_distro_admin create_user_image version=5.1.2 install=no container_type=vbox base_image=casa-run-5.3.ova environment_name=brainvisa-5.1-5.3`
-    - [ ] Verify that the image works
-      - [ ] Install the image
-      - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
-    - [ ] Publish the image on the BrainVISA web site
-
-  - `sif` image for the `cea` distro
-    - [x] Create the image with:
-           `export CASA_BASE_DIRECTORY=/volatile/a-sac-ns-brainvisa/bbi_nightly`
-           `export TMPDIR=/volatile/tmp/a-sac-ns-brainvisa`
-           `./cea-5.1-5.3/bin/casa_distro_admin create_user_image version=5.1.2 name=brainvisa-cea-5.1.2 container_type=singularity distro=cea image_version=5.3 branch=5.1 install_thirdparty=file:///neurospin/brainvisa/thirdparty/thirdparty.json` (beware to name the image brainvisa-cea- and not just cea-)
-
-  - ~`ova` image for the `cea` distro~ we will only do these images if users request them
-    - [ ] ~Create the image with `./cea-5.1-5.3/bin/casa_distro_admin create_user_image name=brainvisa-cea version=5.1.2 base_directory=/volatile/a-sac-ns-brainvisa/bbi_nightly install=no container_type=vbox base_image=casa-run-5.3.ova environment_name=cea-5.1-5.3` (beware to name the image `brainvisa-cea-` and not just `cea-`)~
+	- `sif` monolothic brainvisa install
+		- [ ] Change directory
+		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro`
+		- [ ] Update casa distro
+		        `git pull`
+				`export PATH=$(pwd)/casa-distro/bin:"$PATH"`
+		- [ ] Change directory
+		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily`		
+		- [ ] Pull a "casa-pixi" apptainer image from the BrainVISA server:
+				`export CASA_BASE_DIRECTORY=$(pwd)`
+				`casa_distro pull_image image=casa-pixi-5.4.sif`
+		- [ ] Create the monolithic image
+				`casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=x.y distro=brainvisa`
+		- [ ] Verify that the image works
+		  - [ ] Install the image
+				`mkdir -p /tmp/test-brainvisa-x.y;apptainer run -ce --bind /tmp/test-brainvisa-x.y:/casa/setup /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-x.y.sif`
+		  - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
+		- [ ] Publish the image on the BrainVISA web site
+			  `casa_distro_admin publish_user_image image=brainvisa-x.y.sif`
 
 - [ ] Edit the website to announce the new release
   - [ ] web project sources
   - [ ] log on the web server, rebuild the web site in the casa-distro installed there: `ssh web`, then in the server:
     - [ ] `web_build/bin/bv bv_maker`
-    - [ ] publish the web site using the publish script: `./web-build/src/communication/web/5.1/scripts/bv_publish_web /var/www/html/brainvisa.info`
+    - [ ] publish the web site using the publish script: `./web-build/src/communication/web/x.y/scripts/bv_publish_web /var/www/html/brainvisa.info`
 
-- [ ] Deploy the `cea` release:
-  - [x] Copy `brainvisa-cea-*.sif` and the associated `.json` into `/drf/brainvisa` and set their permissions (`chmod 444`)
-  - [x] Create a new directory `/drf/brainvisa/brainvisa-cea-5.1.2` and install the Singularity release in there 
-		`mkdir -p /drf/brainvisa/test-brainvisa-5.1.2;apptainer run -ce --bind /drf/brainvisa/brainvisa-5.1.2:/casa/setup /drf/brainvisa/brainvisa-5.1.2.sif`
-  - [x] Remove the home directory to enable per-user home: `rm -r /drf/brainvisa/brainvisa-cea-5.1.2/home/`
-  - [x] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
-        `for __f in $(find /casa/install/share/ -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
-        `anatomist $(find /casa/install/share/ -type f -name '*.nii')`
+- [ ] Deploy the `cea` pixi release:
+  - [ ] Create a new directory `/drf/brainvisa/brainvisa-x.y` 
+		`mkdir -p /drf/brainvisa/brainvisa-x.y`
+  - [ ] Setup pixi workspace
+		`cat > pixi.toml <<EOF
+[workspace]
+authors = ["sapetnioc <sapetnioc@users.noreply.github.com>"]
+channels = ["https://brainvisa.info/neuro-forge", "conda-forge", "/drf/neuro-forge/brainvisa-cea"]
+name = "brainvisa-x.y"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+brainvisa = ">=x.y"
+soma-pytorch = "*"
+bioprocessing = ">=x.y"
+constellation = ">=x.y"
+primatologist = ">=x.y"
+morphologist-baby = ">=x.y"
+brainrat = ">=x.y"
+EOF`
+  - [ ] Install environment
+        `pixi install`
+		`pixi run brainvisa -b --setup`
+		`pixi run bv_update_links`
+  - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
+        `pixi shell`
+        `for __f in $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
+        `anatomist $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.nii')`
 		`brainvisa`
-  - [ ] Make it the default version: `ln -sfT brainvisa-cea-5.1.2/ /drf/brainvisa/brainvisa` and `ln -sfT brainvisa-cea-5.1.2/ /drf/brainvisa/brainvisa-5.1`
-  - [ ] ~Copy `brainvisa-cea-*.ova` and the associated `.json` into `/drf/brainvisa` and set their permissions (`chmod 444`)~
-  - [ ] ~Install the `ova` on a non-Linux machine and verify that it works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)~
+  - [ ] Make it the default version: `ln -sfT brainvisa-x.y/ /drf/brainvisa/brainvisa`
 
-
-- [x] Build pip packages for the python projects soma-workflow, soma-base, populse_db and capsul which are distributed in pip:
-  - [x] `./brainvisa-5.1-5.3/bin/bv python3 -m build /casa/host/src/soma/soma-workflow/5.1`
-  - [x] `./brainvisa-5.1-5.3/bin/bv python3 -m build /casa/host/src/soma/soma-base/5.1`
-  - [x] `./brainvisa-5.1-5.3/bin/bv python3 -m build /casa/host/src/populse/populse_db/5.1`
-  - [x] `./brainvisa-5.1-5.3/bin/bv python3 -m build /casa/host/src/capsul/5.1`
+- [ ] Build pip packages for the python projects soma-workflow, soma-base, populse_db and capsul which are distributed in pip:
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m build /casa/host/src/soma/soma-workflow/x.y`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m build /casa/host/src/soma/soma-base/x.y`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m build /casa/host/src/populse/populse_db/x.y`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m build /casa/host/src/capsul/x.y`
 
 - [ ] Publish them to `test.pypi.org`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/soma/soma-workflow/5.1/dist/*`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/soma/soma-base/5.1/dist/*`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/populse/populse-db/5.1/dist/*`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/capsul/5.1/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/soma/soma-workflow/x.y/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/soma/soma-base/x.y/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/populse/populse-db/x.y/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload --repository testpypi /casa/host/src/capsul/x.y/dist/*`
 
 - [ ] Create a virtualenv test environment and test packages install:
-  - [ ] `mkdir -p /tmp/brainvisa-5.1.2/testenv && python3 -m venv /tmp/brainvisa-5.1.2/testenv`
-  - [ ] `/tmp/brainvisa-5.1.2/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
-  - [ ] `/tmp/brainvisa-5.1.2/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-base`
-  - [ ] `/tmp/brainvisa-5.1.2/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ populse-db`
-  - [ ] `/tmp/brainvisa-5.1.2/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ capsul`
+  - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python3 -m venv /tmp/brainvisa-x.y/testenv`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ soma-base`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ populse-db`
+  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ capsul`
 
 - [ ] Publish them to `pypi.org`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload /casa/host/src/soma/soma-workflow/5.1/dist/*`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload /casa/host/src/soma/soma-base/5.1/dist/*`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload /casa/host/src/populse/populse-db/5.1/dist/*`
-  - [ ] `./brainvisa-5.1-5.3/bin/bv python3 -m twine upload /casa/host/capsul/5.1/dist/*`
-  
-- [ ] Create tags with `bv_tag_release`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload /casa/host/src/soma/soma-workflow/x.y/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload /casa/host/src/soma/soma-base/x.y/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload /casa/host/src/populse/populse-db/x.y/dist/*`
+  - [ ] `/drf/brainvisa/brainvisa-x.y/bin/bv python3 -m twine upload /casa/host/capsul/x.y/dist/*`
 
-- [ ] [Open a new GitHub issue for known issues](https://github.com/brainvisa/brainvisa.github.io/issues/new?template=known-issues-of-a-brainvisa-release.md&title=Known+issues+for+BrainVISA+5.1.2)
+- [ ] [Open a new GitHub issue for known issues](https://github.com/brainvisa/brainvisa.github.io/issues/new?template=known-issues-of-a-brainvisa-release.md&title=Known+issues+for+BrainVISA+x.y)
 
 - [ ] Close [the old GitHub known issues](https://github.com/brainvisa/brainvisa.github.io/issues/133)
 
