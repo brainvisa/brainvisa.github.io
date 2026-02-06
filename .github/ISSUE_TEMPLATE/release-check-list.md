@@ -14,6 +14,7 @@ assignees: ''
   - [ ] https://github.com/brainvisa/aims-free/blob/soma-env-x.y/aimsdata/sphinx/user_doc/changelog.md
   - [ ] https://github.com/brainvisa/axon/blob/soma-env-x.y/sphinxdoc/user_doc/changelog.md
   - [ ] https://github.com/brainvisa/anatomist-free/blob/soma-env-x.y/sphinxman/changelog.md
+  - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.md
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/news.md
 
 - [ ] Connect to rosette using
