@@ -10,7 +10,7 @@ assignees: ''
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
-- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+of+BrainVISA%22+is%3Aissue+is%3Aopen)
+- [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+for+BrainVISA%22+is%3Aissue+is%3Aopen)
   - [ ] https://github.com/brainvisa/aims-free/blob/soma-env-x.y/aimsdata/doc/html/en/changelog.html
   - [ ] https://github.com/brainvisa/axon/blob/soma-env-x.y/doc/en/help/changelog.html
   - [ ] https://github.com/brainvisa/anatomist-free/blob/soma-env-x.y/doc/html/en/changelog.html
