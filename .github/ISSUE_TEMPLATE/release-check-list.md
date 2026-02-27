@@ -25,7 +25,7 @@ assignees: ''
   - [ ] Update sources and build software tree
           `pixi run bv_maker`
   - [ ] Update release version and generate packaging plan
-          `pixi run soma-env packaging_plan --release`
+          `pixi run soma-env packaging-plan --release`
   - [ ] Apply packaging plan, build conda packages and publish to /drf/neuro-forge
           `pixi run soma-env apply_plan`
   - [ ] Change directory
