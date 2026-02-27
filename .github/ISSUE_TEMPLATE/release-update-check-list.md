@@ -39,7 +39,7 @@ assignees: ''
 		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro`
 		- [ ] Update casa distro
 		        `git pull`
-				`export PATH=$(pwd)/casa-distro/bin:"$PATH"`
+				`export PATH=$(pwd)/bin:"$PATH"`
 		- [ ] Change directory
 		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily`		
 		- [ ] Pull a "casa-pixi" apptainer image from the BrainVISA server:
