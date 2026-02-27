@@ -47,13 +47,19 @@ assignees: ''
 				`export CASA_BASE_DIRECTORY=$(pwd)`
 				`casa_distro pull_image image=casa-pixi-5.4.sif`
 		- [ ] Create the monolithic image
-				`casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=x.y distro=brainvisa`
+				`casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=x.y.z distro=brainvisa`
 		- [ ] Verify that the image works
 		  - [ ] Install the image
-				`mkdir -p /tmp/test-brainvisa-x.y;apptainer run -ce --bind /tmp/test-brainvisa-x.y:/casa/setup /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-x.y.sif`
+				`mkdir -p /tmp/test-brainvisa-x.y.z;apptainer run -ce --bind /tmp/test-brainvisa-x.y.z:/casa/setup /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-x.y.z.sif`
 		  - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
 		- [ ] Publish the image on the BrainVISA web site
-			  `casa_distro_admin publish_user_image image=brainvisa-x.y.sif`
+			  `casa_distro_admin publish_user_image image=brainvisa-x.y.z.sif`
+    - [ ] deploy it in /drf
+        - [ ] `cd /drf/brainvisa`
+              `wget https://brainvisa.info/download/brainvisa-x.y.z.sif`
+              `mkdir brainvisa-x.y.z`
+              `apptainer run -ce --bind brainvisa-x.y.z:/casa/setup brainvisa-x.y.z.sif`
+        - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
 
 - [ ] Edit the website to announce the new release
   - [ ] web project sources
