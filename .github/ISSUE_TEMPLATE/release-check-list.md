@@ -27,7 +27,7 @@ assignees: ''
   - [ ] Update release version and generate packaging plan
           `pixi run soma-env packaging-plan --release`
   - [ ] Apply packaging plan, build conda packages and publish to /drf/neuro-forge
-          `pixi run soma-env apply_plan`
+          `pixi run soma-env apply-plan`
   - [ ] Change directory
           `cd /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge`
   - [ ] Reindex packages on /drf/neuro-forge and publish packages to brainvisa.info
