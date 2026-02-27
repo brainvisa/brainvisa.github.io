@@ -34,6 +34,7 @@ assignees: ''
           `pixi run neuro-forge publish`
     
 - [ ] Create, test, and publish/deploy the images (optional)
+      (cannot be done on rosette at the moment because of priviledges issues)
 	- `sif` monolothic brainvisa install
 		- [ ] Change directory
 		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro`
