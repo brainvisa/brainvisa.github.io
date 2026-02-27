@@ -72,7 +72,7 @@ assignees: ''
         `anatomist $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.nii')`
 		`brainvisa`
 
-- [ ] Build pip packages for the python projects soma-workflow, soma-base, populse-db and capsul which are distributed in pip:
+- [ ] Build pip packages for the python projects soma-workflow, soma-base, populse-db and capsul which are distributed in pip, if they have changed:
   - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-workflow`
   - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-base`
   - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/populse/populse-db`
