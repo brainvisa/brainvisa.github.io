@@ -1,12 +1,12 @@
 ---
-name: BrainVISA release check-list
+name: BrainVISA update check-list
 about: RESERVED for the @brainvisa/admin team to release BrainVISA projects
 title: BrainVISA x.y release check-list
 labels: ''
 assignees: ''
 ---
 
-# Release x.y check-list
+# Update x.y check-list
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
