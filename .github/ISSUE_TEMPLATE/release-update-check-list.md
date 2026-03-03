@@ -55,7 +55,8 @@ assignees: ''
 		- [ ] Publish the image on the BrainVISA web site
 			  `casa_distro_admin publish_user_image image=brainvisa-x.y.z.sif`
     - [ ] deploy it in /drf
-        - [ ] `cd /drf/brainvisa`
+        - [ ] install the image:
+              `cd /drf/brainvisa`
               `wget https://brainvisa.info/download/brainvisa-x.y.z.sif`
               `mkdir brainvisa-x.y.z`
               `apptainer run -ce --bind brainvisa-x.y.z:/casa/setup brainvisa-x.y.z.sif`
