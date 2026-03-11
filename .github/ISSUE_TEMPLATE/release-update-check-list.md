@@ -1,19 +1,19 @@
 ---
 name: BrainVISA update check-list
 about: RESERVED for the @brainvisa/admin team to release BrainVISA projects
-title: BrainVISA x.y release check-list
+title: BrainVISA 6.0 release check-list
 labels: ''
 assignees: ''
 ---
 
-# Update x.y check-list
+# Update 6.0 check-list
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
 - [ ] Update changelogs and [the list of known issues](https://github.com/brainvisa/brainvisa.github.io/issues?q=%22Known+issues+for+BrainVISA%22+is%3Aissue+is%3Aopen)
-  - [ ] https://github.com/brainvisa/aims-free/blob/soma-env-x.y/aimsdata/sphinx/user_doc/changelog.md
-  - [ ] https://github.com/brainvisa/axon/blob/soma-env-x.y/sphinxdoc/user_doc/changelog.md
-  - [ ] https://github.com/brainvisa/anatomist-free/blob/soma-env-x.y/sphinxman/changelog.md
+  - [ ] https://github.com/brainvisa/aims-free/blob/soma-env-6.0/aimsdata/sphinx/user_doc/changelog.md
+  - [ ] https://github.com/brainvisa/axon/blob/soma-env-6.0/sphinxdoc/user_doc/changelog.md
+  - [ ] https://github.com/brainvisa/anatomist-free/blob/soma-env-6.0/sphinxman/changelog.md
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.md
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/news.md
 
@@ -21,7 +21,7 @@ assignees: ''
         `ssh a-sac-ns-brainvisa@rosette`
 - [ ] Create public and brainvisa-cea packages for conda
   - [ ] Change directory
-          `cd /home_local/a-sac-ns-brainvisa/bbi-daily/soma-env-x.y`
+          `cd /home_local/a-sac-ns-brainvisa/bbi-daily/soma-env-6.0`
   - [ ] Update sources and build software tree
           `pixi run bv_maker`
   - [ ] Update release version and generate packaging plan
@@ -47,19 +47,19 @@ assignees: ''
 				`export CASA_BASE_DIRECTORY=$(pwd)`
 				`casa_distro pull_image image=casa-pixi-5.4.sif`
 		- [ ] Create the monolithic image
-				`casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=x.y.z distro=brainvisa`
+				`casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=6.0.n distro=brainvisa`
 		- [ ] Verify that the image works
 		  - [ ] Install the image
-				`mkdir -p /tmp/test-brainvisa-x.y.z;apptainer run -ce --bind /tmp/test-brainvisa-x.y.z:/casa/setup /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-x.y.z.sif`
+				`mkdir -p /tmp/test-brainvisa-6.0.n;apptainer run -ce --bind /tmp/test-brainvisa-6.0.n:/casa/setup /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-6.0.n.sif`
 		  - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
 		- [ ] Publish the image on the BrainVISA web site
-			  `casa_distro_admin publish_user_image image=brainvisa-x.y.z.sif`
+			  `casa_distro_admin publish_user_image image=brainvisa-6.0.n.sif`
     - [ ] deploy it in /drf
         - [ ] install the image:
               `cd /drf/brainvisa`
-              `wget https://brainvisa.info/download/brainvisa-x.y.z.sif`
-              `mkdir brainvisa-x.y.z`
-              `apptainer run -ce --bind brainvisa-x.y.z:/casa/setup brainvisa-x.y.z.sif`
+              `wget https://brainvisa.info/download/brainvisa-6.0.n.sif`
+              `mkdir brainvisa-6.0.n`
+              `apptainer run -ce --bind brainvisa-6.0.n:/casa/setup brainvisa-6.0.n.sif`
         - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
 
 - [ ] Edit the website to announce the new release
@@ -70,37 +70,37 @@ assignees: ''
 
 - [ ] Deploy the `cea` pixi release:
   - [ ] Update the existing install directory:
-        `cd /drf/brainvisa/brainvisa-x.y`
+        `cd /drf/brainvisa/brainvisa-6.0`
         `pixi update brainvisa`
         `pixi run brainvisa -b --setup`
         `pixi run bv_update_bin_links`
   - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
-        `/drf/brainvisa/brainvisa-x.y/bin/bv bash`
-        `for __f in $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
-        `anatomist $(find /drf/brainvisa/brainvisa-x.y/.pixi/envs/default/share/brainvisa-share-x.y -type f -name '*.nii')`
+        `/drf/brainvisa/brainvisa-6.0/bin/bv bash`
+        `for __f in $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
+        `anatomist $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.nii')`
 		`brainvisa`
 
 - [ ] Build pip packages for the python projects soma-workflow, soma-base, populse-db and capsul which are distributed in pip, if they have changed:
-  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-workflow`
-  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/soma/soma-base`
-  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/populse/populse-db`
-  - [ ] `./soma-env-x.y/bin/bv python -m build ./soma-env-x.y/src/capsul`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma/soma-workflow`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma/soma-base`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/populse/populse-db`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/capsul`
 
 - [ ] Publish them to `test.pypi.org`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/soma/soma-workflow/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/soma/soma-base/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/populse/populse-db/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload --repository testpypi ./soma-env-x.y/src/capsul/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/soma/soma-workflow/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/soma/soma-base/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/populse/populse-db/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/capsul/dist/*`
 
 - [ ] Create a virtualenv test environment and test packages install:
-  - [ ] `mkdir -p /tmp/brainvisa-x.y/testenv && python3 -m venv /tmp/brainvisa-x.y/testenv`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple soma-base`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple populse-db`
-  - [ ] `/tmp/brainvisa-x.y/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple capsul`
+  - [ ] `mkdir -p /tmp/brainvisa-6.0/testenv && python3 -m venv /tmp/brainvisa-6.0/testenv`
+  - [ ] `/tmp/brainvisa-6.0/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ soma-workflow`
+  - [ ] `/tmp/brainvisa-6.0/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple soma-base`
+  - [ ] `/tmp/brainvisa-6.0/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple populse-db`
+  - [ ] `/tmp/brainvisa-6.0/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple capsul`
 
 - [ ] Publish them to `pypi.org`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/soma/soma-workflow/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/soma/soma-base/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/src/populse/populse-db/dist/*`
-  - [ ] `./soma-env-x.y/bin/bv python -m twine upload ./soma-env-x.y/capsul/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/soma/soma-workflow/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/soma/soma-base/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/populse/populse-db/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/capsul/dist/*`
