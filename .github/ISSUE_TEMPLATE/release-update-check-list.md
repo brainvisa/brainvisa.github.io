@@ -58,12 +58,12 @@ assignees: ''
         - [ ] install the image:
               `cd /drf/brainvisa`
               `wget https://brainvisa.info/download/brainvisa-6.0.n.sif`
-              `mkdir brainvisa-6.0.n`
-              `apptainer run -ce --bind brainvisa-6.0.n:/casa/setup brainvisa-6.0.n.sif`
+              `mkdir brainvisa-casa-6.0.n`
+              `apptainer run -ce --bind brainvisa-casa-6.0.n:/casa/setup brainvisa-6.0.n.sif`
         - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
 
 - [ ] Edit the website to announce the new release
-  - [ ] web project sources
+  - [ ] Edit web project sources
   - [ ] log on rosette, rebuild the web site in the brainvisa-web build: `ssh a-sac-ns-brainvisa@rosette`, then in the server:
     - [ ] `/home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/bin/bv_maker`
     - [ ] publish the web site using the publish script: `/home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/bin/bv /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/src/communication/web/master/scripts/bv_publish_web brainvisa@brainvisa.info:/var/www/html/brainvisa.info`
