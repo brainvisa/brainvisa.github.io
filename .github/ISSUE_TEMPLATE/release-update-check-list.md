@@ -17,68 +17,27 @@ assignees: ''
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.md
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/news.md
 
+- [ ] Edit the website to announce the new release
+  - [ ] Edit web project sources
+
 - [ ] Connect to rosette using
         `ssh a-sac-ns-brainvisa@rosette`
+
 - [ ] Create public and brainvisa-cea packages for conda
   - [ ] Change directory
           `cd /home_local/a-sac-ns-brainvisa/bbi-daily/soma-env-6.0`
-  - [ ] Update sources and build software tree
-          `pixi run bv_maker`
   - [ ] Update release version and generate packaging plan
-          `pixi run soma-env packaging-plan --release`
-  - [ ] Apply packaging plan, build conda packages and publish to /drf/neuro-forge
+          `pixi run soma-env packaging-plan --release --nf-publish /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge --install /drf/neurospin/brainvisa-6.0 --container /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro --web`
+  - [ ] Ap^ply packaging plan, build conda packages and publish to /drf/neuro-forge
           `pixi run soma-env apply-plan`
-  - [ ] Change directory
-          `cd /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge`
-  - [ ] Reindex packages on /drf/neuro-forge and publish packages to brainvisa.info
-          `pixi run neuro-forge publish`
-    
-- [ ] Create, test, and publish/deploy the images (optional)
-      (cannot be done on rosette at the moment because of priviledges issues)
-	- `sif` monolothic brainvisa install
-		- [ ] Change directory
-		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro`
-		- [ ] Update casa distro
-		        `git pull`
-				`export PATH=$(pwd)/bin:"$PATH"`
-		- [ ] Change directory
-		        `cd /home_local/a-sac-ns-brainvisa/bbi-daily`		
-		- [ ] Pull a "casa-pixi" apptainer image from the BrainVISA server:
-				`export CASA_BASE_DIRECTORY=$(pwd)`
-				`casa_distro pull_image image=casa-pixi-5.4.sif`
-		- [ ] Create the monolithic image
-				`casa_distro_admin create_user_image container_type=apptainer_pixi image_version=5.4 base_image=casa-pixi-5.4.sif version=6.0.n distro=brainvisa`
-		- [ ] Verify that the image works
-		  - [ ] Install the image
-				`mkdir -p /tmp/test-brainvisa-6.0.n;apptainer run -ce --bind /tmp/test-brainvisa-6.0.n:/casa/setup /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-6.0.n.sif`
-		  - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
-		- [ ] Publish the image on the BrainVISA web site
-			  `casa_distro_admin publish_user_image image=brainvisa-6.0.n.sif`
-    - [ ] deploy it in /drf
-        - [ ] install the image:
-              `cd /drf/brainvisa`
-              `wget https://brainvisa.info/download/brainvisa-6.0.n.sif`
-              `mkdir brainvisa-casa-6.0.n`
-              `apptainer run -ce --bind brainvisa-casa-6.0.n:/casa/setup brainvisa-6.0.n.sif`
-        - [ ] Use it to run `AimsFileInfo`, `anatomist`, `brainvisa`
 
-- [ ] Edit the website to announce the new release
-  - [ ] Edit web project sources
-  - [ ] log on rosette, rebuild the web site in the brainvisa-web build: `ssh a-sac-ns-brainvisa@rosette`, then in the server:
-    - [ ] `/home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/bin/bv_maker`
-    - [ ] publish the web site using the publish script: `/home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/bin/bv /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web/src/communication/web/master/scripts/bv_publish_web brainvisa@brainvisa.info:/var/www/html/brainvisa.info`
-
-- [ ] Deploy the `cea` pixi release:
-  - [ ] Update the existing install directory:
-        `cd /drf/brainvisa/brainvisa-6.0`
-        `pixi update brainvisa`
-        `pixi run brainvisa -b --setup`
-        `pixi run bv_update_bin_links`
-  - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
-        `/drf/brainvisa/brainvisa-6.0/bin/bv bash`
-        `for __f in $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
-        `anatomist $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.nii')`
-		`brainvisa`
+- [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
+    `/drf/brainvisa/brainvisa-6.0/bin/bv bash`
+    `for __f in $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
+    `anatomist $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.nii')`
+    `brainvisa`
+- [ ] Verify that the copntainer deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
+    `/drf/brainvisa/brainvisa-casa-6.0.34/bin/anatomist`
 
 - [ ] Build pip packages for the python projects soma-workflow, soma-base, populse-db and capsul which are distributed in pip, if they have changed:
   - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma/soma-workflow`
