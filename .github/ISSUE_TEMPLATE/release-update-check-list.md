@@ -28,7 +28,7 @@ assignees: ''
           `cd /home_local/a-sac-ns-brainvisa/bbi-daily/soma-env-6.0`
   - [ ] Update release version and generate packaging plan
           `pixi run soma-env packaging-plan --release --nf-publish /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge --install /drf/neurospin/brainvisa-6.0 --container /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro --web`
-  - [ ] Ap^ply packaging plan, build conda packages and publish to /drf/neuro-forge
+  - [ ] Apply packaging plan, build conda packages and publish to /drf/neuro-forge and web site, build containers and install them etc.
           `pixi run soma-env apply-plan`
 
 - [ ] Verify that the deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
