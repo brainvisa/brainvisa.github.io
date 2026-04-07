@@ -14,6 +14,7 @@ assignees: ''
   - [ ] https://github.com/brainvisa/aims-free/blob/soma-env-6.0/aimsdata/sphinx/user_doc/changelog.md
   - [ ] https://github.com/brainvisa/axon/blob/soma-env-6.0/sphinxdoc/user_doc/changelog.md
   - [ ] https://github.com/brainvisa/anatomist-free/blob/soma-env-6.0/sphinxman/changelog.md
+  - [ ] https://github.com/brainvisa/morphologist-gpl/blob/soma-env-6.0/sphinx/user_doc/changelog.md
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/changelog.md
   - [ ] https://bioproj.cea.fr/redmine/projects/brainvisa-commu/repository/web/revisions/master/entry/sphinx/news.md
 
@@ -27,7 +28,7 @@ assignees: ''
   - [ ] Change directory
           `cd /home_local/a-sac-ns-brainvisa/bbi-daily/soma-env-6.0`
   - [ ] Update release version and generate packaging plan
-          `pixi run soma-env packaging-plan --release --nf-publish /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge --install /drf/neurospin/brainvisa-6.0 --container /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro --web`
+          `pixi run soma-env packaging-plan --release --nf-publish /home_local/a-sac-ns-brainvisa/bbi-daily/neuro-forge --install /drf/neurospin/brainvisa-6.0 --container /home_local/a-sac-ns-brainvisa/bbi-daily/casa-distro --web /home_local/a-sac-ns-brainvisa/bbi-daily/brainvisa-web`
   - [ ] Apply packaging plan, build conda packages and publish to /drf/neuro-forge and web site, build containers and install them etc.
           `pixi run soma-env apply-plan`
 
