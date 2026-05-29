@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-# Update 6.0 check-list
+# Update 6.0.37 check-list
 
 - [ ] Check that tests are successful on https://brainvisa.info/builds/
 
@@ -37,19 +37,19 @@ assignees: ''
     `for __f in $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.ima'); do AimsFileInfo -v -i "${__f}"; done`
     `anatomist $(find /drf/brainvisa/brainvisa-6.0/.pixi/envs/default/share/brainvisa-share-6.0 -type f -name '*.nii')`
     `brainvisa`
-- [ ] Verify that the copntainer deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
-    `/drf/brainvisa/brainvisa-casa-6.0.34/bin/anatomist`
+- [ ] Verify that the container deployment works (use it to launch `AimsFileInfo --info`, `anatomist`, `brainvisa`...)
+    `/drf/brainvisa/brainvisa-casa-6.0.37/bin/anatomist`
 
 - [ ] Build pip packages for the python projects soma-workflow, soma-base, populse-db and capsul which are distributed in pip, if they have changed:
-  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma/soma-workflow`
-  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma/soma-base`
-  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/populse/populse-db`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma-workflow`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/soma-base`
+  - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/populse-db`
   - [ ] `./soma-env-6.0/bin/bv python -m build ./soma-env-6.0/src/capsul`
 
 - [ ] Publish them to `test.pypi.org`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/soma/soma-workflow/dist/*`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/soma/soma-base/dist/*`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/populse/populse-db/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/soma-workflow/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/soma-base/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/populse-db/dist/*`
   - [ ] `./soma-env-6.0/bin/bv python -m twine upload --repository testpypi ./soma-env-6.0/src/capsul/dist/*`
 
 - [ ] Create a virtualenv test environment and test packages install:
@@ -60,7 +60,7 @@ assignees: ''
   - [ ] `/tmp/brainvisa-6.0/testenv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple capsul`
 
 - [ ] Publish them to `pypi.org`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/soma/soma-workflow/dist/*`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/soma/soma-base/dist/*`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/populse/populse-db/dist/*`
-  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/capsul/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/soma-workflow/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/soma-base/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/populse-db/dist/*`
+  - [ ] `./soma-env-6.0/bin/bv python -m twine upload ./soma-env-6.0/src/capsul/dist/*`
